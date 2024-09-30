@@ -8,6 +8,7 @@ use std::{sync::Arc, time::Duration};
 
 use gloo_storage::{LocalStorage, SessionStorage, Storage};
 use leptos::*;
+use leptos_i18n::t;
 use leptos_meta::*;
 use leptos_router::{use_navigate, use_query_map};
 use serde::{Deserialize, Serialize};
@@ -19,13 +20,11 @@ use crate::{
             FormElement,
         },
         messages::alert::{use_alerts, Alert, Alerts},
-    },
-    core::{
+    }, core::{
         oauth::{oauth_authenticate, AuthenticationResult},
         schema::{Builder, Schemas, Transformer, Type, Validator},
         AccessToken, Permissions,
-    },
-    STATE_LOGIN_NAME_KEY, STATE_STORAGE_KEY,
+    }, i18n::use_i18n, STATE_LOGIN_NAME_KEY, STATE_STORAGE_KEY
 };
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -128,6 +127,8 @@ pub fn Login() -> impl IntoView {
             && !show_totp.get()
     });
 
+    let i18n = use_i18n();
+
     view! {
         <Body class="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-16"/>
         <main class="w-full max-w-md mx-auto p-6">
@@ -145,7 +146,7 @@ pub fn Login() -> impl IntoView {
                                 <Show when=move || has_remote.get()>
                                     <div>
                                         <label class="block text-sm mb-2 dark:text-white">
-                                            Host
+                                            {t!(i18n,login_host)}
                                         </label>
                                         <InputText
                                             placeholder="https://mail.example.org"
@@ -156,7 +157,7 @@ pub fn Login() -> impl IntoView {
                                 <Show when=move || !show_totp.get()>
                                     <div>
                                         <label class="block text-sm mb-2 dark:text-white">
-                                            Login
+                                        {t!(i18n,login_login)}
                                         </label>
                                         <InputText
                                             placeholder="user@example.org"
@@ -166,7 +167,7 @@ pub fn Login() -> impl IntoView {
                                     <div>
                                         <div class="flex justify-between items-center">
                                             <label class="block text-sm mb-2 dark:text-white">
-                                                Password
+                                                {t!(i18n,login_password)}
                                             </label>
 
                                         </div>
@@ -200,7 +201,7 @@ pub fn Login() -> impl IntoView {
                                     </div>
                                     <div class="ms-3">
                                         <label for="remember-me" class="text-sm dark:text-white">
-                                            Remember me
+                                            {t!(i18n,login_remember_me)}
                                         </label>
                                     </div>
                                 </div>
@@ -244,8 +245,7 @@ pub fn Login() -> impl IntoView {
                                         });
                                     }
                                 >
-
-                                    Sign in
+                                    {t!(i18n,login_sign_in)}
                                 </button>
                             </div>
                         </form>

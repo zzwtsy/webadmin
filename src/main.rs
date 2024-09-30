@@ -7,6 +7,7 @@
 #![allow(unstable_name_collisions)]
 use core::{schema::Schemas, AccessToken, Permission, Permissions};
 use std::{sync::Arc, time::Duration};
+leptos_i18n::load_locales!();
 
 use components::{
     icon::{
