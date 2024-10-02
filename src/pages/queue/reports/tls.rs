@@ -103,7 +103,7 @@ pub fn TlsReportDisplay(
             if !v.is_empty() {
                 Some(view! {
                     <ReportItem label=k>
-                        <ReportTextValue value=v/>
+                        <ReportTextValue value=v />
                     </ReportItem>
                 })
             } else {
@@ -116,22 +116,22 @@ pub fn TlsReportDisplay(
         <Card>
             <CardItem title="Report Start" contents=report_start_date subcontents=report_start_time>
 
-                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Report End" contents=report_end_date subcontents=report_end_time>
 
-                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Successes" contents=total_success.to_string()>
 
-                <IconCheckCircle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconCheckCircle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Failures" contents=total_fail.to_string()>
 
-                <IconCancel attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconCancel attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
 
@@ -140,13 +140,13 @@ pub fn TlsReportDisplay(
         <ReportView hide=Signal::derive(move || current_view.get() != CurrentView::Main)>
             <ReportSection title="Report Details">
                 <ReportItem label="Report ID">
-                    <ReportTextValue value=report.report_id/>
+                    <ReportTextValue value=report.report_id />
                 </ReportItem>
                 <ReportItem label="Organization Name" hide=report.organization_name.is_none()>
-                    <ReportTextValue value=report.organization_name.unwrap_or_default()/>
+                    <ReportTextValue value=report.organization_name.unwrap_or_default() />
                 </ReportItem>
                 <ReportItem label="Contact" hide=report.contact_info.is_none()>
-                    <ReportTextValue value=report.contact_info.unwrap_or_default()/>
+                    <ReportTextValue value=report.contact_info.unwrap_or_default() />
                 </ReportItem>
                 {extra}
             </ReportSection>
@@ -254,22 +254,22 @@ pub fn TlsReportDisplay(
                             <ReportSection title="Policy">
                                 <ReportItem label="Type">{policy.policy.policy_type}</ReportItem>
                                 <ReportItem label="Domain">
-                                    <ReportTextValue value=policy.policy.policy_domain/>
+                                    <ReportTextValue value=policy.policy.policy_domain />
                                 </ReportItem>
                                 <ReportItem label="MX Host" hide=policy.policy.mx_host.is_empty()>
-                                    <ReportTextValue value=policy.policy.mx_host.join(", ")/>
+                                    <ReportTextValue value=policy.policy.mx_host.join(", ") />
                                 </ReportItem>
                                 <ReportItem label="Total successes">
                                     <ReportTextValue value=policy
                                         .summary
                                         .total_success
-                                        .to_string()/>
+                                        .to_string() />
                                 </ReportItem>
                                 <ReportItem label="Total failures">
                                     <ReportTextValue value=policy
                                         .summary
                                         .total_failure
-                                        .to_string()/>
+                                        .to_string() />
                                 </ReportItem>
                             </ReportSection>
                             {if !policy.failure_details.is_empty() {
@@ -415,7 +415,7 @@ pub fn TlsReportDisplay(
                         })>
                             <ReportSection title="Failure Details">
                                 <ReportItem label="Type">
-                                    <ReportTextValue value=failure.result_type.to_string()/>
+                                    <ReportTextValue value=failure.result_type.to_string() />
                                 </ReportItem>
                                 <ReportItem
                                     label="Sending MTA IP"
@@ -424,7 +424,7 @@ pub fn TlsReportDisplay(
                                     <ReportTextValue value=failure
                                         .sending_mta_ip
                                         .map(|ip| ip.to_string())
-                                        .unwrap_or_default()/>
+                                        .unwrap_or_default() />
                                 </ReportItem>
                                 <ReportItem
                                     label="Receiving IP"
@@ -433,7 +433,7 @@ pub fn TlsReportDisplay(
                                     <ReportTextValue value=failure
                                         .receiving_ip
                                         .map(|ip| ip.to_string())
-                                        .unwrap_or_default()/>
+                                        .unwrap_or_default() />
                                 </ReportItem>
                                 <ReportItem
                                     label="Receiving MX Host"
@@ -441,7 +441,7 @@ pub fn TlsReportDisplay(
                                 >
                                     <ReportTextValue value=failure
                                         .receiving_mx_hostname
-                                        .unwrap_or_default()/>
+                                        .unwrap_or_default() />
                                 </ReportItem>
                                 <ReportItem
                                     label="Receiving MX HELO"
@@ -449,12 +449,12 @@ pub fn TlsReportDisplay(
                                 >
                                     <ReportTextValue value=failure
                                         .receiving_mx_helo
-                                        .unwrap_or_default()/>
+                                        .unwrap_or_default() />
                                 </ReportItem>
                                 <ReportItem label="Failed Sessions">
                                     <ReportTextValue value=failure
                                         .failed_session_count
-                                        .to_string()/>
+                                        .to_string() />
                                 </ReportItem>
                                 <ReportItem
                                     label="Failure Code"
@@ -462,7 +462,7 @@ pub fn TlsReportDisplay(
                                 >
                                     <ReportTextValue value=failure
                                         .failure_reason_code
-                                        .unwrap_or_default()/>
+                                        .unwrap_or_default() />
                                 </ReportItem>
                                 <ReportItem
                                     label="Additional Info"
@@ -470,7 +470,7 @@ pub fn TlsReportDisplay(
                                 >
                                     <ReportTextValue value=failure
                                         .additional_information
-                                        .unwrap_or_default()/>
+                                        .unwrap_or_default() />
                                 </ReportItem>
                             </ReportSection>
                             <div class="mt-5 flex justify-end gap-x-2">

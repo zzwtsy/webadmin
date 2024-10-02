@@ -74,7 +74,7 @@ pub fn ReportDisplay() -> impl IntoView {
     provide_context(create_rw_signal::<HashSet<String>>(HashSet::new()));
 
     view! {
-        <Alerts/>
+        <Alerts />
         <Transition fallback=Skeleton>
 
             {move || match fetch_report.get() {

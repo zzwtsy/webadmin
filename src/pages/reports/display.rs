@@ -89,7 +89,7 @@ pub fn IncomingReportDisplay() -> impl IntoView {
     provide_context(selected);
 
     view! {
-        <Alerts/>
+        <Alerts />
         <Transition fallback=Skeleton>
 
             {move || match fetch_report.get() {

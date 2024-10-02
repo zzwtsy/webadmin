@@ -99,7 +99,7 @@ pub fn StackedBadge(
                                 >
 
                                     <span class="sr-only">Remove</span>
-                                    <IconXMark attr:class="flex-shrink-0 size-3"/>
+                                    <IconXMark attr:class="flex-shrink-0 size-3" />
                                 </button>
                             </Badge>
 

@@ -63,7 +63,7 @@ pub fn InputText(
                 class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3"
                 class:hidden=move || error.get().is_none()
             >
-                <IconExclamationCircle attr:class="flex-shrink-0 size-4 text-red-500"/>
+                <IconExclamationCircle attr:class="flex-shrink-0 size-4 text-red-500" />
             </div>
         </div>
         {move || {
@@ -488,7 +488,7 @@ pub fn InputRate(
                     class:hidden=move || { disabled.get() || value.get().period.unit.is_empty() }
                 >
 
-                    <IconClock attr:class="mx-auto size-4 text-gray-400"/>
+                    <IconClock attr:class="mx-auto size-4 text-gray-400" />
                 </span>
                 <input
                     type="text"
@@ -708,13 +708,12 @@ pub fn TextArea(
                             data.update(element.id, event_target_value(&ev));
                         });
                 }
-            >
-            </textarea>
+            ></textarea>
             <div
                 class="absolute top-0 end-0 flex items-center pointer-events-none p-3"
                 class:hidden=move || error.get().is_none()
             >
-                <IconExclamationCircle attr:class="flex-shrink-0 size-4 text-red-500"/>
+                <IconExclamationCircle attr:class="flex-shrink-0 size-4 text-red-500" />
             </div>
         </div>
         {move || {

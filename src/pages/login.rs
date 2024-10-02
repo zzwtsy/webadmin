@@ -20,11 +20,14 @@ use crate::{
             FormElement,
         },
         messages::alert::{use_alerts, Alert, Alerts},
-    }, core::{
+    },
+    core::{
         oauth::{oauth_authenticate, AuthenticationResult},
         schema::{Builder, Schemas, Transformer, Type, Validator},
         AccessToken, Permissions,
-    }, i18n::use_i18n, STATE_LOGIN_NAME_KEY, STATE_STORAGE_KEY
+    },
+    i18n::use_i18n,
+    STATE_LOGIN_NAME_KEY, STATE_STORAGE_KEY,
 };
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -130,17 +133,17 @@ pub fn Login() -> impl IntoView {
     let i18n = use_i18n();
 
     view! {
-        <Body class="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-16"/>
+        <Body class="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-16" />
         <main class="w-full max-w-md mx-auto p-6">
             <div class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-4 sm:p-7">
                     <div class="text-center p-6">
-                        <img src="/logo.svg"/>
+                        <img src="/logo.svg" />
 
                     </div>
 
                     <div class="mt-5">
-                        <Alerts/>
+                        <Alerts />
                         <form on:submit=|ev| ev.prevent_default()>
                             <div class="grid gap-y-4">
                                 <Show when=move || has_remote.get()>
@@ -157,7 +160,7 @@ pub fn Login() -> impl IntoView {
                                 <Show when=move || !show_totp.get()>
                                     <div>
                                         <label class="block text-sm mb-2 dark:text-white">
-                                        {t!(i18n,login_login)}
+                                            {t!(i18n,login_login)}
                                         </label>
                                         <InputText
                                             placeholder="user@example.org"
@@ -171,7 +174,7 @@ pub fn Login() -> impl IntoView {
                                             </label>
 
                                         </div>
-                                        <InputPassword element=FormElement::new("password", data)/>
+                                        <InputPassword element=FormElement::new("password", data) />
                                     </div>
                                 </Show>
                                 <Show when=move || show_totp.get()>
@@ -179,7 +182,7 @@ pub fn Login() -> impl IntoView {
                                         <label class="block text-sm mb-2 dark:text-white">
                                             TOTP Token
                                         </label>
-                                        <InputText element=FormElement::new("totp-code", data)/>
+                                        <InputText element=FormElement::new("totp-code", data) />
                                     </div>
                                 </Show>
                                 <div class="flex items-center">

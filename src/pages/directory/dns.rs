@@ -111,7 +111,7 @@ pub fn DnsDisplay() -> impl IntoView {
     );
 
     view! {
-        <Alerts/>
+        <Alerts />
         <Transition fallback=Skeleton>
 
             {move || match domain_details.get() {
@@ -152,13 +152,13 @@ pub fn DnsDisplay() -> impl IntoView {
                                     })
                                 >
 
-                                    <IconEnvelope attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconEnvelope attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
                                 </CardItem>
                                 <CardItem title="Accounts" contents=user_count.to_string()>
-                                    <IconUserGroup attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconUserGroup attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
                                 </CardItem>
                                 <CardItem title="DKIM Signatures" contents=signature_count>
-                                    <IconShieldCheck attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconShieldCheck attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
                                 </CardItem>
                             </Card>
 

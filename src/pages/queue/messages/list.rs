@@ -183,7 +183,7 @@ pub fn QueueList() -> impl IntoView {
                         })
                     >
 
-                        <IconRefresh/>
+                        <IconRefresh />
                     </ToolbarButton>
 
                     <ToolbarButton
@@ -204,7 +204,7 @@ pub fn QueueList() -> impl IntoView {
                         })
                     >
 
-                        <IconLaunch/>
+                        <IconLaunch />
                     </ToolbarButton>
 
                     <ToolbarButton
@@ -238,7 +238,7 @@ pub fn QueueList() -> impl IntoView {
                         })
                     >
 
-                        <IconCancel/>
+                        <IconCancel />
                     </ToolbarButton>
 
                 </Toolbar>
@@ -253,7 +253,7 @@ pub fn QueueList() -> impl IntoView {
                         Some(Err(err)) => {
                             total_results.set(Some(0));
                             alert.set(Alert::from(err));
-                            Some(view! { <Skeleton/> }.into_view())
+                            Some(view! { <Skeleton /> }.into_view())
                         }
                         Some(Ok(messages)) if !messages.items.is_empty() => {
                             total_results.set(Some(messages.total as u32));
@@ -283,7 +283,7 @@ pub fn QueueList() -> impl IntoView {
                                             key=|message| message.id
                                             let:message
                                         >
-                                            <QueueItem message/>
+                                            <QueueItem message />
                                         </For>
 
                                     </ColumnList>
@@ -374,7 +374,7 @@ fn QueueItem(message: Message) -> impl IntoView {
         <tr>
             <ListItem>
                 <label class="flex">
-                    <SelectItem item_id=message.id.to_string()/>
+                    <SelectItem item_id=message.id.to_string() />
 
                     <span class="sr-only">Checkbox</span>
                 </label>
@@ -433,21 +433,21 @@ impl IntoView for Status {
         match self {
             Status::Completed(text) => view! {
                 <Badge color=Color::Green>
-                    <IconCheckCircle attr:class="flex-shrink-0 size-3"/>
+                    <IconCheckCircle attr:class="flex-shrink-0 size-3" />
                     {text}
                 </Badge>
             }
             .into_view(),
             Status::TemporaryFailure(text) => view! {
                 <Badge color=Color::Blue>
-                    <IconClock attr:class="flex-shrink-0 size-3"/>
+                    <IconClock attr:class="flex-shrink-0 size-3" />
                     {text}
                 </Badge>
             }
             .into_view(),
             Status::PermanentFailure(text) => view! {
                 <Badge color=Color::Red>
-                    <IconAlertTriangle attr:class="flex-shrink-0 size-3"/>
+                    <IconAlertTriangle attr:class="flex-shrink-0 size-3" />
                     {text}
                 </Badge>
             }

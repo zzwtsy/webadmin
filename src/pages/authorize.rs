@@ -133,17 +133,17 @@ pub fn Authorize() -> impl IntoView {
         .into_signal();
 
     view! {
-        <Body class="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-16"/>
+        <Body class="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-16" />
         <main class="w-full max-w-md mx-auto p-6">
             <div class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-4 sm:p-7">
                     <div class="text-center p-6">
-                        <img src="/logo.svg"/>
+                        <img src="/logo.svg" />
 
                     </div>
 
                     <div class="mt-5">
-                        <Alerts/>
+                        <Alerts />
                         <form on:submit=|ev| ev.prevent_default()>
                             <div class="grid gap-y-4">
 
@@ -164,7 +164,7 @@ pub fn Authorize() -> impl IntoView {
                                             </label>
 
                                         </div>
-                                        <InputPassword element=FormElement::new("password", data)/>
+                                        <InputPassword element=FormElement::new("password", data) />
                                     </div>
                                 </Show>
 
@@ -173,7 +173,7 @@ pub fn Authorize() -> impl IntoView {
                                         <label class="block text-sm mb-2 dark:text-white">
                                             TOTP Token
                                         </label>
-                                        <InputText element=FormElement::new("totp-code", data)/>
+                                        <InputText element=FormElement::new("totp-code", data) />
                                     </div>
                                 </Show>
 

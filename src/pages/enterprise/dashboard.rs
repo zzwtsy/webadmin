@@ -408,7 +408,7 @@ pub fn Dashboard() -> impl IntoView {
             "
         </Style>
 
-        <Alerts/>
+        <Alerts />
 
         <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto flex justify-end">
             <div class="m-1 hs-dropdown [--trigger:hover] relative inline-flex">
@@ -427,7 +427,7 @@ pub fn Dashboard() -> impl IntoView {
                     }
                 >
 
-                    <IconThreeDots attr:class="flex-none size-4 text-gray-600 dark:text-neutral-500"/>
+                    <IconThreeDots attr:class="flex-none size-4 text-gray-600 dark:text-neutral-500" />
                 </button>
 
                 <div
@@ -499,7 +499,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconUserGroup attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconUserGroup attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Total Domains"
@@ -508,7 +508,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconBuildingOffice attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconBuildingOffice attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Server Memory"
@@ -517,7 +517,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconServer attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconServer attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
             </CardSimple>
             <CardSimple>
@@ -528,7 +528,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconInboxArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconInboxArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Sent Messages"
@@ -546,7 +546,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconPaperAirplane attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconPaperAirplane attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Pending Messages"
@@ -555,7 +555,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
             </CardSimple>
 
@@ -564,7 +564,7 @@ pub fn Dashboard() -> impl IntoView {
                 labels=&["sent", "received"]
                 data=messages_sent_received
             />
-            <DashboardChart title="Memory usage" labels=&["MB"] data=memory_usage/>
+            <DashboardChart title="Memory usage" labels=&["MB"] data=memory_usage />
         </Show>
         <Show when=move || { section.get() == Section::Network }>
             <CardSimple>
@@ -575,7 +575,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconPhoneArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconPhoneArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="IMAP active"
@@ -584,7 +584,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconPhoneArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconPhoneArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="POP3 active"
@@ -593,7 +593,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconPhoneArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconPhoneArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="HTTP active"
@@ -602,7 +602,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconPhoneArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconPhoneArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
             </CardSimple>
             <CardSimple>
@@ -613,7 +613,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconPhone attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconPhone attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="IMAP total"
@@ -622,7 +622,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconPhone attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconPhone attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="POP3 total"
@@ -631,7 +631,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconPhone attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconPhone attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="HTTP total"
@@ -640,7 +640,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconPhone attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconPhone attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
             </CardSimple>
 
@@ -654,7 +654,7 @@ pub fn Dashboard() -> impl IntoView {
                 labels=&["IMAP", "POP3"]
                 data=imap_pop3_connections
             />
-            <DashboardChart title="HTTP Connections" labels=&["total"] data=http_connections/>
+            <DashboardChart title="HTTP Connections" labels=&["total"] data=http_connections />
         </Show>
         <Show when=move || { section.get() == Section::Security }>
             <CardSimple>
@@ -665,7 +665,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconNoSymbol attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconNoSymbol attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="IPs banned"
@@ -683,7 +683,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconShieldExclamation attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconShieldExclamation attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Auth Failures"
@@ -692,7 +692,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconExclamationCircle attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconExclamationCircle attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
             </CardSimple>
             <CardSimple>
@@ -703,7 +703,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconTrash attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconTrash attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="DMARC Warnings"
@@ -715,7 +715,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconExclamationTriangle attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconExclamationTriangle attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="TLS Warnings"
@@ -724,7 +724,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconExclamationTriangle attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconExclamationTriangle attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
             </CardSimple>
 
@@ -733,7 +733,7 @@ pub fn Dashboard() -> impl IntoView {
                 labels=&["auth bans", "brute bans", "loiter bans", "blocked"]
                 data=fail_to_ban
             />
-            <DashboardChart title="Warnings" labels=&["DMARC", "TLS"] data=warnings_dmarc_tls/>
+            <DashboardChart title="Warnings" labels=&["DMARC", "TLS"] data=warnings_dmarc_tls />
         </Show>
 
         <Show when=move || { section.get() == Section::Delivery }>
@@ -745,7 +745,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconQueueList attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconQueueList attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Active Sessions"
@@ -754,7 +754,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconSignal attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconSignal attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Session Time"
@@ -763,7 +763,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Delivery Time"
@@ -772,7 +772,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
             </CardSimple>
 
@@ -784,7 +784,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconInboxArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconInboxArrowDown attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Messages Sent"
@@ -793,7 +793,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconPaperAirplane attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconPaperAirplane attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="DSN Sent"
@@ -802,7 +802,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconDocumentText attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconDocumentText attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Reports Sent"
@@ -811,7 +811,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconDocumentChartBar attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconDocumentChartBar attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
             </CardSimple>
 
@@ -825,8 +825,8 @@ pub fn Dashboard() -> impl IntoView {
                 labels=&["messages", "DSNs", "reports"]
                 data=messages_sent
             />
-            <DashboardChart title="Delivery time" labels=&["seconds"] data=delivery_time/>
-            <DashboardChart title="Queue size" labels=&["messages"] data=queue_size/>
+            <DashboardChart title="Delivery time" labels=&["seconds"] data=delivery_time />
+            <DashboardChart title="Queue size" labels=&["messages"] data=queue_size />
 
         </Show>
 
@@ -839,7 +839,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Indexing Time"
@@ -848,7 +848,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="DNS Lookup Time"
@@ -857,7 +857,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconClock attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
                 <CardSimpleItem
                     title="Server Memory"
@@ -866,7 +866,7 @@ pub fn Dashboard() -> impl IntoView {
                     })
                 >
 
-                    <IconServer attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400"/>
+                    <IconServer attr:class="shrink-0 size-5 text-gray-600 dark:text-neutral-400" />
                 </CardSimpleItem>
             </CardSimple>
 
@@ -875,7 +875,7 @@ pub fn Dashboard() -> impl IntoView {
                 labels=&["ingest", "index"]
                 data=database_performance
             />
-            <DashboardChart title="Memory usage" labels=&["bytes"] data=memory_usage/>
+            <DashboardChart title="Memory usage" labels=&["bytes"] data=memory_usage />
         </Show>
     }
 }

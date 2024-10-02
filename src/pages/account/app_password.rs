@@ -229,7 +229,7 @@ pub fn AppPasswords() -> impl IntoView {
                         })
                     >
 
-                        <IconTrash/>
+                        <IconTrash />
                     </ToolbarButton>
 
                     <ToolbarButton
@@ -240,7 +240,7 @@ pub fn AppPasswords() -> impl IntoView {
                         }
                     >
 
-                        <IconAdd size=16 attr:class="flex-shrink-0 size-3"/>
+                        <IconAdd size=16 attr:class="flex-shrink-0 size-3" />
                     </ToolbarButton>
 
                 </Toolbar>
@@ -255,7 +255,7 @@ pub fn AppPasswords() -> impl IntoView {
                         Some(Err(err)) => {
                             total_results.set(Some(0));
                             alert.set(Alert::from(err));
-                            Some(view! { <Skeleton/> }.into_view())
+                            Some(view! { <Skeleton /> }.into_view())
                         }
                         Some(Ok(passwords)) if !passwords.items.is_empty() => {
                             total_results.set(Some(passwords.total as u32));
@@ -279,7 +279,7 @@ pub fn AppPasswords() -> impl IntoView {
                                             key=|password| password.name.clone()
                                             let:password
                                         >
-                                            <PasswordItem password/>
+                                            <PasswordItem password />
                                         </For>
 
                                     </ColumnList>
@@ -342,7 +342,7 @@ fn PasswordItem(password: AppPassword) -> impl IntoView {
         <tr>
             <ListItem>
                 <label class="flex">
-                    <SelectItem item_id=password_id/>
+                    <SelectItem item_id=password_id />
 
                     <span class="sr-only">Checkbox</span>
                 </label>
@@ -425,10 +425,10 @@ pub fn AppPasswordCreate() -> impl IntoView {
 
             <FormSection>
                 <FormItem label="Application Name">
-                    <InputText element=FormElement::new("name", data)/>
+                    <InputText element=FormElement::new("name", data) />
                 </FormItem>
                 <FormItem label="Password">
-                    <InputText element=FormElement::new("password", data)/>
+                    <InputText element=FormElement::new("password", data) />
                 </FormItem>
 
             </FormSection>

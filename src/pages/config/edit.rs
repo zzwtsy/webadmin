@@ -409,7 +409,7 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Secret => {
                                                     view! {
-                                                        <InputPassword element=FormElement::new(field.id, data)/>
+                                                        <InputPassword element=FormElement::new(field.id, data) />
                                                     }
                                                         .into_view()
                                                 }
@@ -443,7 +443,7 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Size => {
                                                     view! {
-                                                        <InputSize element=FormElement::new(field.id, data)/>
+                                                        <InputSize element=FormElement::new(field.id, data) />
                                                     }
                                                         .into_view()
                                                 }
@@ -469,19 +469,19 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 }
                                                 Type::Rate => {
                                                     view! {
-                                                        <InputRate element=FormElement::new(field.id, data)/>
+                                                        <InputRate element=FormElement::new(field.id, data) />
                                                     }
                                                         .into_view()
                                                 }
                                                 Type::Expression => {
                                                     view! {
-                                                        <InputExpression element=FormElement::new(field.id, data)/>
+                                                        <InputExpression element=FormElement::new(field.id, data) />
                                                     }
                                                         .into_view()
                                                 }
                                                 Type::Cron => {
                                                     view! {
-                                                        <SelectCron element=FormElement::new(field.id, data)/>
+                                                        <SelectCron element=FormElement::new(field.id, data) />
                                                     }
                                                         .into_view()
                                                 }
@@ -563,7 +563,7 @@ pub fn SettingsEdit() -> impl IntoView {
                     disabled=pending
                 >
 
-                    <IconRefresh/>
+                    <IconRefresh />
                 </Button>
 
                 <Button

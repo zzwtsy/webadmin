@@ -54,13 +54,13 @@ pub fn Layout(
     let show_sidebar = create_rw_signal(false);
 
     view! {
-        <Body class="bg-gray-50 dark:bg-slate-900"/>
-        <Modal/>
-        <Header permissions/>
-        <ToggleNavigation menu_items show_sidebar/>
-        <SideBar menu_items=menu_items_toggle show_sidebar/>
+        <Body class="bg-gray-50 dark:bg-slate-900" />
+        <Modal />
+        <Header permissions />
+        <ToggleNavigation menu_items show_sidebar />
+        <SideBar menu_items=menu_items_toggle show_sidebar />
         <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
-            <Outlet/>
+            <Outlet />
         </div>
     }
 }

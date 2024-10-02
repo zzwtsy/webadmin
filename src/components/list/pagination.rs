@@ -47,9 +47,7 @@ pub fn Pagination(
                         </select>
                     </div>
 
-                    <p class="text-sm text-gray-600 dark:text-gray-400">
-                        "of " {total_pages}
-                    </p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">"of " {total_pages}</p>
                 </div>
 
             </Show>
@@ -68,7 +66,7 @@ pub fn Pagination(
                         }
                     >
 
-                        <IconArrowLeft attr:class="flex-shrink-0 size-4"/>
+                        <IconArrowLeft attr:class="flex-shrink-0 size-4" />
 
                         Prev
                     </button>
@@ -85,7 +83,7 @@ pub fn Pagination(
                         >
 
                             Next
-                            <IconArrowRight attr:class="flex-shrink-0 size-4"/>
+                            <IconArrowRight attr:class="flex-shrink-0 size-4" />
                         </button>
 
                     </Suspense>
@@ -114,7 +112,7 @@ pub fn ItemPagination(
                     }
                 >
 
-                    <IconArrowLeft attr:class="flex-shrink-0 size-3.5"/>
+                    <IconArrowLeft attr:class="flex-shrink-0 size-3.5" />
                     <span aria-hidden="true" class="sr-only">
                         Previous
                     </span>
@@ -142,7 +140,7 @@ pub fn ItemPagination(
                     <span aria-hidden="true" class="sr-only">
                         Next
                     </span>
-                    <IconArrowRight attr:class="flex-shrink-0 size-3.5"/>
+                    <IconArrowRight attr:class="flex-shrink-0 size-3.5" />
                 </button>
             </nav>
         </Show>

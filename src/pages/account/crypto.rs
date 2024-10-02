@@ -163,19 +163,19 @@ pub fn ManageCrypto() -> impl IntoView {
                                 <FormSection>
                                     <Show when=move || show_totp.get()>
                                         <FormItem label="TOTP Token">
-                                            <InputText element=FormElement::new("totp-code", data)/>
+                                            <InputText element=FormElement::new("totp-code", data) />
                                         </FormItem>
                                     </Show>
 
                                     <Show when=move || !show_totp.get()>
                                         <FormItem label="Current Password">
-                                            <InputPassword element=FormElement::new("password", data)/>
+                                            <InputPassword element=FormElement::new("password", data) />
                                         </FormItem>
                                         <FormItem
                                             label="Encryption type"
                                             tooltip="Whether to use OpenPGP or S/MIME for encryption."
                                         >
-                                            <Select element=FormElement::new("type", data)/>
+                                            <Select element=FormElement::new("type", data) />
                                         </FormItem>
 
                                         <FormItem
@@ -183,7 +183,7 @@ pub fn ManageCrypto() -> impl IntoView {
                                             tooltip="The encryption algorithms to use"
                                             hide=has_no_crypto
                                         >
-                                            <Select element=FormElement::new("algo", data)/>
+                                            <Select element=FormElement::new("algo", data) />
 
                                         </FormItem>
 
@@ -192,7 +192,7 @@ pub fn ManageCrypto() -> impl IntoView {
                                             tooltip="The armored OpenPGP certificate or S/MIME certificate in PEM format."
                                             hide=has_no_crypto
                                         >
-                                            <TextArea element=FormElement::new("certs", data)/>
+                                            <TextArea element=FormElement::new("certs", data) />
                                         </FormItem>
                                     </Show>
 

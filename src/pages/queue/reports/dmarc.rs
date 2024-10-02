@@ -132,7 +132,7 @@ pub fn DmarcReportDisplay(
             if !v.is_empty() {
                 Some(view! {
                     <ReportItem label=k>
-                        <ReportTextValue value=v/>
+                        <ReportTextValue value=v />
                     </ReportItem>
                 })
             } else {
@@ -145,22 +145,22 @@ pub fn DmarcReportDisplay(
         <Card>
             <CardItem title="Domain" contents=domain>
 
-                <IconEnvelope attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconEnvelope attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Report Start" contents=report_start_date subcontents=report_start_time>
 
-                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Report End" contents=report_end_date subcontents=report_end_time>
 
-                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Sender" contents=from subcontents=email>
 
-                <IconId attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconId attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
 
@@ -168,22 +168,22 @@ pub fn DmarcReportDisplay(
         <Card>
             <CardItem title="Passed" contents=total_pass.to_string()>
 
-                <IconCheckCircle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconCheckCircle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Rejected" contents=total_reject.to_string()>
 
-                <IconCancel attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconCancel attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Quarantines" contents=total_quarantine.to_string()>
 
-                <IconAlertTriangle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconAlertTriangle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="No Action" contents=total_none.to_string()>
 
-                <IconArrowRightCircle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconArrowRightCircle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
 
@@ -192,16 +192,16 @@ pub fn DmarcReportDisplay(
         <ReportView hide=display_record>
             <ReportSection title="Report Details">
                 <ReportItem label="Report ID">
-                    <ReportTextValue value=report.report_metadata.report_id/>
+                    <ReportTextValue value=report.report_metadata.report_id />
                 </ReportItem>
                 <ReportItem
                     label="Organization Name"
                     hide=report.report_metadata.org_name.is_empty()
                 >
-                    <ReportTextValue value=report.report_metadata.org_name/>
+                    <ReportTextValue value=report.report_metadata.org_name />
                 </ReportItem>
                 <ReportItem label="E-mail" hide=report.report_metadata.email.is_empty()>
-                    <ReportTextValue value=report.report_metadata.email/>
+                    <ReportTextValue value=report.report_metadata.email />
                 </ReportItem>
                 <ReportItem
                     label="Extra Contact Info"
@@ -210,32 +210,32 @@ pub fn DmarcReportDisplay(
                     <ReportTextValue value=report
                         .report_metadata
                         .extra_contact_info
-                        .unwrap_or_default()/>
+                        .unwrap_or_default() />
                 </ReportItem>
                 <ReportItem label="Errors" hide=report.report_metadata.error.is_empty()>
-                    <ReportTextValue value=report.report_metadata.error.join(",")/>
+                    <ReportTextValue value=report.report_metadata.error.join(",") />
                 </ReportItem>
                 {extra}
             </ReportSection>
             <ReportSection title="Published Policy">
                 <ReportItem label="Domain">
-                    <ReportTextValue value=report.policy_published.domain/>
+                    <ReportTextValue value=report.policy_published.domain />
                 </ReportItem>
 
                 <ReportItem label="DKIM Alignment">
-                    <ReportTextValue value=report.policy_published.adkim.to_string()/>
+                    <ReportTextValue value=report.policy_published.adkim.to_string() />
                 </ReportItem>
                 <ReportItem label="SPF Alignment">
-                    <ReportTextValue value=report.policy_published.aspf.to_string()/>
+                    <ReportTextValue value=report.policy_published.aspf.to_string() />
                 </ReportItem>
                 <ReportItem label="Domain Policy">
-                    <ReportTextValue value=report.policy_published.p.to_string()/>
+                    <ReportTextValue value=report.policy_published.p.to_string() />
                 </ReportItem>
                 <ReportItem label="Subdomain Policy">
-                    <ReportTextValue value=report.policy_published.sp.to_string()/>
+                    <ReportTextValue value=report.policy_published.sp.to_string() />
                 </ReportItem>
                 <ReportItem label="Testing" hide=!report.policy_published.testing>
-                    <ReportTextValue value="Yes"/>
+                    <ReportTextValue value="Yes" />
                 </ReportItem>
             </ReportSection>
             <div class="gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700 dark:first:border-transparent">
@@ -352,13 +352,13 @@ pub fn DmarcReportDisplay(
                                     label="Envelope From"
                                     hide=record.identifiers.envelope_from.is_empty()
                                 >
-                                    <ReportTextValue value=record.identifiers.envelope_from/>
+                                    <ReportTextValue value=record.identifiers.envelope_from />
                                 </ReportItem>
                                 <ReportItem
                                     label="Header From"
                                     hide=record.identifiers.header_from.is_empty()
                                 >
-                                    <ReportTextValue value=record.identifiers.header_from/>
+                                    <ReportTextValue value=record.identifiers.header_from />
                                 </ReportItem>
                                 <ReportItem
                                     label="Envelope To"
@@ -367,17 +367,17 @@ pub fn DmarcReportDisplay(
                                     <ReportTextValue value=record
                                         .identifiers
                                         .envelope_to
-                                        .unwrap_or_default()/>
+                                        .unwrap_or_default() />
                                 </ReportItem>
                                 <ReportItem label="Source IP" hide=record.row.source_ip.is_none()>
                                     <ReportTextValue value=record
                                         .row
                                         .source_ip
                                         .map(|ip| ip.to_string())
-                                        .unwrap_or_default()/>
+                                        .unwrap_or_default() />
                                 </ReportItem>
                                 <ReportItem label="Count" hide=record.row.count == 0>
-                                    <ReportTextValue value=record.row.count.to_string()/>
+                                    <ReportTextValue value=record.row.count.to_string() />
                                 </ReportItem>
                                 <ReportItem
                                     label="Override Reasons"
@@ -390,7 +390,7 @@ pub fn DmarcReportDisplay(
                                         .into_iter()
                                         .map(|reason| reason.to_string())
                                         .collect::<Vec<String>>()
-                                        .join(", "))/>
+                                        .join(", ")) />
 
                                 </ReportItem>
                             </ReportSection>
@@ -510,7 +510,7 @@ impl IntoView for ActionDisposition {
         match self {
             ActionDisposition::Pass => view! {
                 <Badge color=Color::Green>
-                    <IconCheckCircle attr:class="flex-shrink-0 size-3"/>
+                    <IconCheckCircle attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -519,7 +519,7 @@ impl IntoView for ActionDisposition {
             .into_view(),
             ActionDisposition::Quarantine => view! {
                 <Badge color=Color::Yellow>
-                    <IconAlertTriangle attr:class="flex-shrink-0 size-3"/>
+                    <IconAlertTriangle attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -528,7 +528,7 @@ impl IntoView for ActionDisposition {
             .into_view(),
             ActionDisposition::Reject => view! {
                 <Badge color=Color::Red>
-                    <IconCancel attr:class="flex-shrink-0 size-3"/>
+                    <IconCancel attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -537,7 +537,7 @@ impl IntoView for ActionDisposition {
             .into_view(),
             ActionDisposition::Unspecified | ActionDisposition::None => view! {
                 <Badge color=Color::Blue>
-                    <IconArrowRightCircle attr:class="flex-shrink-0 size-3"/>
+                    <IconArrowRightCircle attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -553,7 +553,7 @@ impl IntoView for DmarcResult {
         match self {
             DmarcResult::Pass => view! {
                 <Badge color=Color::Green>
-                    <IconCheckCircle attr:class="flex-shrink-0 size-3"/>
+                    <IconCheckCircle attr:class="flex-shrink-0 size-3" />
 
                     Pass
 
@@ -562,7 +562,7 @@ impl IntoView for DmarcResult {
             .into_view(),
             DmarcResult::Fail => view! {
                 <Badge color=Color::Red>
-                    <IconAlertTriangle attr:class="flex-shrink-0 size-3"/>
+                    <IconAlertTriangle attr:class="flex-shrink-0 size-3" />
 
                     Fail
 
@@ -571,7 +571,7 @@ impl IntoView for DmarcResult {
             .into_view(),
             DmarcResult::Unspecified => view! {
                 <Badge color=Color::Blue>
-                    <IconArrowRightCircle attr:class="flex-shrink-0 size-3"/>
+                    <IconArrowRightCircle attr:class="flex-shrink-0 size-3" />
 
                     Unspecified
 
@@ -587,7 +587,7 @@ impl IntoView for DkimResult {
         match self {
             DkimResult::Pass => view! {
                 <Badge color=Color::Green>
-                    <IconCheckCircle attr:class="flex-shrink-0 size-3"/>
+                    <IconCheckCircle attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -596,7 +596,7 @@ impl IntoView for DkimResult {
             .into_view(),
             DkimResult::Fail => view! {
                 <Badge color=Color::Red>
-                    <IconAlertTriangle attr:class="flex-shrink-0 size-3"/>
+                    <IconAlertTriangle attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -605,7 +605,7 @@ impl IntoView for DkimResult {
             .into_view(),
             DkimResult::TempError => view! {
                 <Badge color=Color::Yellow>
-                    <IconClock attr:class="flex-shrink-0 size-3"/>
+                    <IconClock attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -614,7 +614,7 @@ impl IntoView for DkimResult {
             .into_view(),
             DkimResult::PermError => view! {
                 <Badge color=Color::Red>
-                    <IconCancel attr:class="flex-shrink-0 size-3"/>
+                    <IconCancel attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -623,7 +623,7 @@ impl IntoView for DkimResult {
             .into_view(),
             DkimResult::None | DkimResult::Policy | DkimResult::Neutral => view! {
                 <Badge color=Color::Blue>
-                    <IconCancel attr:class="flex-shrink-0 size-3"/>
+                    <IconCancel attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -639,7 +639,7 @@ impl IntoView for SpfResult {
         match self {
             SpfResult::Pass => view! {
                 <Badge color=Color::Green>
-                    <IconCheckCircle attr:class="flex-shrink-0 size-3"/>
+                    <IconCheckCircle attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -648,7 +648,7 @@ impl IntoView for SpfResult {
             .into_view(),
             SpfResult::Fail | SpfResult::SoftFail => view! {
                 <Badge color=Color::Red>
-                    <IconAlertTriangle attr:class="flex-shrink-0 size-3"/>
+                    <IconAlertTriangle attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -657,7 +657,7 @@ impl IntoView for SpfResult {
             .into_view(),
             SpfResult::TempError => view! {
                 <Badge color=Color::Yellow>
-                    <IconClock attr:class="flex-shrink-0 size-3"/>
+                    <IconClock attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -666,7 +666,7 @@ impl IntoView for SpfResult {
             .into_view(),
             SpfResult::PermError => view! {
                 <Badge color=Color::Red>
-                    <IconCancel attr:class="flex-shrink-0 size-3"/>
+                    <IconCancel attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 
@@ -675,7 +675,7 @@ impl IntoView for SpfResult {
             .into_view(),
             SpfResult::None | SpfResult::Neutral => view! {
                 <Badge color=Color::Blue>
-                    <IconCancel attr:class="flex-shrink-0 size-3"/>
+                    <IconCancel attr:class="flex-shrink-0 size-3" />
 
                     {self.to_string()}
 

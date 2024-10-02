@@ -12,8 +12,8 @@ use crate::components::icon::IconArrowLeft;
 #[component]
 pub fn NotFound() -> impl IntoView {
     view! {
-        <Html lang="en" class="h-full"/>
-        <Body class="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-16"/>
+        <Html lang="en" class="h-full" />
+        <Body class="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-16" />
         <div class="max-w-[50rem] flex flex-col mx-auto size-full">
             <header class="mb-auto flex justify-center z-50 w-full py-4">
                 <nav class="px-4 sm:px-6 lg:px-8" aria-label="Global">
@@ -39,7 +39,7 @@ pub fn NotFound() -> impl IntoView {
                         class="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                         href="/manage/directory/accounts"
                     >
-                        <IconArrowLeft/>
+                        <IconArrowLeft />
                         Back to manage
                     </a>
                 </div>

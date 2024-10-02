@@ -528,7 +528,7 @@ pub fn PrincipalEdit() -> impl IntoView {
                                             })
                                         >
 
-                                            <InputPassword element=FormElement::new("password", data)/>
+                                            <InputPassword element=FormElement::new("password", data) />
                                         </FormItem>
 
                                         <FormItem
@@ -542,7 +542,7 @@ pub fn PrincipalEdit() -> impl IntoView {
                                             <InputPassword element=FormElement::new(
                                                 "otpauth_url",
                                                 data,
-                                            )/>
+                                            ) />
                                         </FormItem>
 
                                         <FormItem
@@ -576,7 +576,7 @@ pub fn PrincipalEdit() -> impl IntoView {
                                         >
 
                                             <div class="relative">
-                                                <InputSize element=FormElement::new("quota", data)/>
+                                                <InputSize element=FormElement::new("quota", data) />
                                                 <Show when=move || { used_quota > 0 }>
                                                     <p class="mt-3">
                                                         <label class="inline-flex items-center gap-x-1 text-xs text-black-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
@@ -605,7 +605,7 @@ pub fn PrincipalEdit() -> impl IntoView {
                                             })
                                         >
 
-                                            <InputText element=FormElement::new("max_accounts", data)/>
+                                            <InputText element=FormElement::new("max_accounts", data) />
                                         </FormItem>
                                         <FormItem
                                             stacked=true
@@ -615,7 +615,7 @@ pub fn PrincipalEdit() -> impl IntoView {
                                             })
                                         >
 
-                                            <InputText element=FormElement::new("max_domains", data)/>
+                                            <InputText element=FormElement::new("max_domains", data) />
                                         </FormItem>
                                         <FormItem
                                             stacked=true
@@ -625,7 +625,7 @@ pub fn PrincipalEdit() -> impl IntoView {
                                             })
                                         >
 
-                                            <InputText element=FormElement::new("max_groups", data)/>
+                                            <InputText element=FormElement::new("max_groups", data) />
                                         </FormItem>
                                         <FormItem
                                             stacked=true
@@ -635,7 +635,7 @@ pub fn PrincipalEdit() -> impl IntoView {
                                             })
                                         >
 
-                                            <InputText element=FormElement::new("max_lists", data)/>
+                                            <InputText element=FormElement::new("max_lists", data) />
                                         </FormItem>
                                         <FormItem
                                             stacked=true
@@ -645,7 +645,7 @@ pub fn PrincipalEdit() -> impl IntoView {
                                             })
                                         >
 
-                                            <InputText element=FormElement::new("max_roles", data)/>
+                                            <InputText element=FormElement::new("max_roles", data) />
                                         </FormItem>
 
                                     </FormSection>

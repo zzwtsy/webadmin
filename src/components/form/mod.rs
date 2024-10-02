@@ -45,7 +45,7 @@ pub fn Form(
                     <p class="text-sm text-gray-600 dark:text-gray-400">{move || subtitle.get()}</p>
                 </div>
 
-                <Alerts/>
+                <Alerts />
 
                 <form>{children()}</form>
             </div>

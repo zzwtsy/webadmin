@@ -146,12 +146,12 @@ pub fn Maintenance() -> impl IntoView {
     let actions = ACTIONS.iter().enumerate().filter_map(|(idx, action)| {
         let icon_class = "mt-1 flex-shrink-0 size-5 text-gray-800 dark:text-gray-200";
         let icon = match action.icon {
-            "refresh" => view! { <IconRefresh attr:class=icon_class/> },
-            "check_circle" => view! { <IconCheckCircle attr:class=icon_class/> },
-            "power" => view! { <IconPower attr:class=icon_class/> },
-            "shield_check" => view! { <IconShieldCheck attr:class=icon_class/> },
-            "computer_desktop" => view! { <IconComputerDesktop attr:class=icon_class/> },
-            "document_magnifying_glass" => view! { <IconDocumentMagnifyingGlass attr:class=icon_class/> },
+            "refresh" => view! { <IconRefresh attr:class=icon_class /> },
+            "check_circle" => view! { <IconCheckCircle attr:class=icon_class /> },
+            "power" => view! { <IconPower attr:class=icon_class /> },
+            "shield_check" => view! { <IconShieldCheck attr:class=icon_class /> },
+            "computer_desktop" => view! { <IconComputerDesktop attr:class=icon_class /> },
+            "document_magnifying_glass" => view! { <IconDocumentMagnifyingGlass attr:class=icon_class /> },
             _ => unreachable!("No icon specified"),
         };
 
@@ -183,7 +183,7 @@ pub fn Maintenance() -> impl IntoView {
 
     view! {
         <div class="max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <Alerts/>
+            <Alerts />
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
 
                 {actions}

@@ -25,7 +25,7 @@ pub fn Header(permissions: Memo<Option<Permissions>>) -> impl IntoView {
             <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8">
 
                 <div class="me-5 lg:me-0 lg:hidden">
-                    <img src="/logo.svg" title=VERSION_NAME/>
+                    <img src="/logo.svg" title=VERSION_NAME />
                 </div>
 
                 <div class="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
@@ -114,7 +114,7 @@ pub fn Header(permissions: Memo<Option<Permissions>>) -> impl IntoView {
                             }
                         >
 
-                            <IconServer/>
+                            <IconServer />
                         </a>
 
                         <a
@@ -128,7 +128,7 @@ pub fn Header(permissions: Memo<Option<Permissions>>) -> impl IntoView {
                             }
                         >
 
-                            <IconAdjustmentsHorizontal/>
+                            <IconAdjustmentsHorizontal />
 
                         </a>
                         <a
@@ -161,7 +161,7 @@ pub fn Header(permissions: Memo<Option<Permissions>>) -> impl IntoView {
                             }
                         >
 
-                            <IconUserCircle/>
+                            <IconUserCircle />
 
                         </a>
                         <a
@@ -170,7 +170,7 @@ pub fn Header(permissions: Memo<Option<Permissions>>) -> impl IntoView {
                             target="_blank"
                             title="Sponsor Stalwart open source"
                         >
-                            <IconHeart/>
+                            <IconHeart />
 
                         </a>
                         <a
@@ -183,7 +183,7 @@ pub fn Header(permissions: Memo<Option<Permissions>>) -> impl IntoView {
                             }
                         >
 
-                            <IconPower/>
+                            <IconPower />
 
                         </a>
                     </div>

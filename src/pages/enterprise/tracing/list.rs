@@ -144,7 +144,7 @@ pub fn SpanList() -> impl IntoView {
                         Some(Err(err)) => {
                             total_results.set(Some(0));
                             alert.set(Alert::from(err));
-                            Some(view! { <Skeleton/> }.into_view())
+                            Some(view! { <Skeleton /> }.into_view())
                         }
                         Some(Ok(spans)) if !spans.items.is_empty() => {
                             total_results.set(Some(spans.total as u32));
@@ -163,7 +163,7 @@ pub fn SpanList() -> impl IntoView {
                                             key=|span| span.id()
                                             let:span
                                         >
-                                            <HistoryItem span/>
+                                            <HistoryItem span />
                                         </For>
 
                                     </ColumnList>

@@ -142,19 +142,19 @@ pub fn SpamTest() -> impl IntoView {
 
             <FormSection title="Test SPAM Filter".to_string()>
                 <FormItem label="IP Address" tooltip="IP address of the remote SMTP server">
-                    <InputText element=FormElement::new("remote_ip", data)/>
+                    <InputText element=FormElement::new("remote_ip", data) />
                 </FormItem>
                 <FormItem label="PTR Address" is_optional=true tooltip="Reverse IP lookup">
-                    <InputText element=FormElement::new("iprev.ptr", data)/>
+                    <InputText element=FormElement::new("iprev.ptr", data) />
                 </FormItem>
                 <FormItem label="EHLO Domain" tooltip="Hostname specified at the EHLO stage">
-                    <InputText element=FormElement::new("helo_domain", data)/>
+                    <InputText element=FormElement::new("helo_domain", data) />
                 </FormItem>
             </FormSection>
 
             <FormSection title="Envelope".to_string()>
                 <FormItem label="Sender" tooltip="Envelope return path address">
-                    <InputText element=FormElement::new("env_from", data)/>
+                    <InputText element=FormElement::new("env_from", data) />
                 </FormItem>
                 <FormItem label="To" tooltip="Message recipients">
                     <StackedInput
@@ -166,41 +166,41 @@ pub fn SpamTest() -> impl IntoView {
 
             <FormSection title="Authentication Results".to_string()>
                 <FormItem label="SPF" tooltip="SPF authentication results">
-                    <Select element=FormElement::new("spf.result", data)/>
+                    <Select element=FormElement::new("spf.result", data) />
                 </FormItem>
                 <FormItem label="SPF EHLO" tooltip="SPF EHLO authentication results">
-                    <Select element=FormElement::new("spf_ehlo.result", data)/>
+                    <Select element=FormElement::new("spf_ehlo.result", data) />
                 </FormItem>
                 <FormItem label="DKIM" tooltip="DKIM authentication results">
-                    <Select element=FormElement::new("dkim.result", data)/>
+                    <Select element=FormElement::new("dkim.result", data) />
                 </FormItem>
                 <FormItem
                     label="DKIM Domains"
                     tooltip="Domain names passing DKIM validation"
                     is_optional=true
                 >
-                    <InputText element=FormElement::new("dkim.domains", data)/>
+                    <InputText element=FormElement::new("dkim.domains", data) />
                 </FormItem>
                 <FormItem label="ARC" tooltip="ARC authentication results">
-                    <Select element=FormElement::new("arc.result", data)/>
+                    <Select element=FormElement::new("arc.result", data) />
                 </FormItem>
                 <FormItem label="DMARC" tooltip="DMARC authentcation results">
-                    <Select element=FormElement::new("dmarc.result", data)/>
+                    <Select element=FormElement::new("dmarc.result", data) />
                 </FormItem>
                 <FormItem label="DMARC Policy" tooltip="DMARC policy of the sender domain">
-                    <Select element=FormElement::new("dmarc.policy", data)/>
+                    <Select element=FormElement::new("dmarc.policy", data) />
                 </FormItem>
                 <FormItem label="Reverse IP" tooltip="Reverse IP validation results">
-                    <Select element=FormElement::new("iprev.result", data)/>
+                    <Select element=FormElement::new("iprev.result", data) />
                 </FormItem>
             </FormSection>
 
             <FormSection title="Message".to_string()>
                 <FormItem label="Contents" tooltip="Message body">
-                    <TextArea element=FormElement::new("message", data)/>
+                    <TextArea element=FormElement::new("message", data) />
                 </FormItem>
                 <FormItem label="Parameters" tooltip="SMTP BODY parameter">
-                    <Select element=FormElement::new("param.body", data)/>
+                    <Select element=FormElement::new("param.body", data) />
                 </FormItem>
                 <FormItem label="">
                     <InputSwitch
@@ -318,10 +318,10 @@ pub fn SpamTrain() -> impl IntoView {
 
             <FormSection>
                 <FormItem label="Train">
-                    <Select element=FormElement::new("train", data)/>
+                    <Select element=FormElement::new("train", data) />
                 </FormItem>
                 <FormItem label="Message">
-                    <TextArea element=FormElement::new("message", data)/>
+                    <TextArea element=FormElement::new("message", data) />
                 </FormItem>
 
             </FormSection>

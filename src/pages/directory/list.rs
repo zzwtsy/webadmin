@@ -242,7 +242,7 @@ pub fn PrincipalList() -> impl IntoView {
                         })
                     >
 
-                        <IconTrash/>
+                        <IconTrash />
                     </ToolbarButton>
 
                     <ToolbarButton
@@ -262,7 +262,7 @@ pub fn PrincipalList() -> impl IntoView {
                         }
                     >
 
-                        <IconAdd size=16 attr:class="flex-shrink-0 size-3"/>
+                        <IconAdd size=16 attr:class="flex-shrink-0 size-3" />
                     </ToolbarButton>
 
                 </Toolbar>
@@ -277,7 +277,7 @@ pub fn PrincipalList() -> impl IntoView {
                         Some(Err(err)) => {
                             total_results.set(Some(0));
                             alert.set(Alert::from(err));
-                            Some(view! { <Skeleton/> }.into_view())
+                            Some(view! { <Skeleton /> }.into_view())
                         }
                         Some(Ok(principals)) if !principals.items.is_empty() => {
                             total_results.set(Some(principals.total as u32));
@@ -451,7 +451,7 @@ fn PrincipalItem(principal: Principal, params: Parameters) -> impl IntoView {
         <tr>
             <ListItem>
                 <label class="flex">
-                    <SelectItem item_id=principal.get_untracked().name_or_empty()/>
+                    <SelectItem item_id=principal.get_untracked().name_or_empty() />
                     <span class="sr-only">Checkbox</span>
                 </label>
             </ListItem>
@@ -610,7 +610,7 @@ fn PrincipalItem(principal: Principal, params: Parameters) -> impl IntoView {
                         }
                     >
 
-                        <IconThreeDots/>
+                        <IconThreeDots />
                     </button>
                     <div
                         class=move || {

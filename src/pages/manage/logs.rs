@@ -113,7 +113,7 @@ pub fn Logs() -> impl IntoView {
                         Some(Err(err)) => {
                             total_results.set(Some(0));
                             alert.set(Alert::from(err));
-                            Some(view! { <Skeleton/> }.into_view())
+                            Some(view! { <Skeleton /> }.into_view())
                         }
                         Some(Ok(logs)) if !logs.items.is_empty() => {
                             total_results.set(Some(logs.total as u32));
@@ -131,7 +131,7 @@ pub fn Logs() -> impl IntoView {
                                             key=|log| log.id()
                                             let:log
                                         >
-                                            <LogItem log/>
+                                            <LogItem log />
                                         </For>
 
                                     </ColumnList>

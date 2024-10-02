@@ -116,7 +116,7 @@ pub fn LiveTracing() -> impl IntoView {
                 });
                 view! {
                     <div>
-                        <Alerts/>
+                        <Alerts />
                         <ReportView>
                             <div class="gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700 dark:first:border-transparent">
                                 <div class="sm:col-span-12 pb-10">
@@ -131,7 +131,7 @@ pub fn LiveTracing() -> impl IntoView {
                                         key=|event| event.id()
                                         let:event
                                     >
-                                        <EventView event=event span_start=None/>
+                                        <EventView event=event span_start=None />
                                     </For>
 
                                 </div>

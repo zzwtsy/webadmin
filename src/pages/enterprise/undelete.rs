@@ -287,7 +287,7 @@ pub fn UndeleteList() -> impl IntoView {
                             })
                         >
 
-                            <IconArrowUTurnLeft/>
+                            <IconArrowUTurnLeft />
                         </ToolbarButton>
 
                     </Toolbar>
@@ -302,7 +302,7 @@ pub fn UndeleteList() -> impl IntoView {
                             Some(Err(err)) => {
                                 results.set(Arc::new(List::default()));
                                 alert.set(Alert::from(err));
-                                Some(view! { <Skeleton/> }.into_view())
+                                Some(view! { <Skeleton /> }.into_view())
                             }
                             Some(Ok(blobs)) if !blobs.items.is_empty() => {
                                 results.set(blobs.clone());
@@ -332,7 +332,7 @@ pub fn UndeleteList() -> impl IntoView {
                                                 key=|blob| blob.hash.clone()
                                                 let:blob
                                             >
-                                                <UndeleteItem blob blob_hash/>
+                                                <UndeleteItem blob blob_hash />
                                             </For>
 
                                         </ColumnList>
@@ -430,7 +430,7 @@ pub fn UndeleteList() -> impl IntoView {
                                                     }
                                                 >
 
-                                                    <IconEnvelope/>
+                                                    <IconEnvelope />
                                                 </Button>
 
                                             </Show>
@@ -473,7 +473,7 @@ fn UndeleteItem(blob: DeletedBlob, blob_hash: RwSignal<String>) -> impl IntoView
         <tr>
             <ListItem>
                 <label class="flex">
-                    <SelectItem item_id=blob_id/>
+                    <SelectItem item_id=blob_id />
 
                     <span class="sr-only">Checkbox</span>
                 </label>

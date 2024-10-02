@@ -120,7 +120,7 @@ pub fn InputExpression(
                                     />
 
                                     <span class="py-2 px-3 inline-flex items-center min-w-fit w-full border border-gray-200 bg-gray-50 text-sm text-gray-500 -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:w-auto sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
-                                        <IconArrowRightCircle attr:class="mx-auto size-4 text-gray-400"/>
+                                        <IconArrowRightCircle attr:class="mx-auto size-4 text-gray-400" />
                                     </span>
                                     <input
                                         type="text"
@@ -156,7 +156,7 @@ pub fn InputExpression(
                                         }
                                     >
 
-                                        <IconXMark/>
+                                        <IconXMark />
                                     </button>
                                 </div>
 
@@ -196,7 +196,7 @@ pub fn InputExpression(
                     />
 
                     <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-4">
-                        <IconVariable attr:class="flex-shrink-0 size-4 text-gray-400"/>
+                        <IconVariable attr:class="flex-shrink-0 size-4 text-gray-400" />
                     </div>
                 </div>
 
@@ -230,7 +230,7 @@ pub fn InputExpression(
                 }
             >
 
-                <IconPlus attr:class="flex-shrink-0 size-3.5"/>
+                <IconPlus attr:class="flex-shrink-0 size-3.5" />
                 Add Condition
             </button>
         </p>

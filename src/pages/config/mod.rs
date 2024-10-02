@@ -268,7 +268,7 @@ impl LayoutBuilder {
         LayoutBuilder::new("/settings")
             // Server
             .create("Server")
-            .icon(view! { <IconServerStack/> })
+            .icon(view! { <IconServerStack /> })
             // Network
             .create("Network")
             .route("/network/edit")
@@ -312,7 +312,7 @@ impl LayoutBuilder {
             .insert(true)
             // Storage
             .create("Storage")
-            .icon(view! { <IconCircleStack/> })
+            .icon(view! { <IconCircleStack /> })
             .create("Settings")
             .route("/storage/edit")
             .insert(true)
@@ -322,7 +322,7 @@ impl LayoutBuilder {
             .insert(true)
             // Authentication
             .create("Authentication")
-            .icon(view! { <IconKey/> })
+            .icon(view! { <IconKey /> })
             .create("Settings")
             .route("/authentication/edit")
             .insert(true)
@@ -335,7 +335,7 @@ impl LayoutBuilder {
             .insert(true)
             // SMTP
             .create("SMTP")
-            .icon(view! { <IconInboxArrowDown/> })
+            .icon(view! { <IconInboxArrowDown /> })
             .create("Inbound")
             .create("Connect stage")
             .route("/smtp-in-connect/edit")
@@ -426,7 +426,7 @@ impl LayoutBuilder {
             .insert(true)
             // JMAP
             .create("JMAP")
-            .icon(view! { <IconInboxStack/> })
+            .icon(view! { <IconInboxStack /> })
             .create("Session")
             .route("/jmap-session/edit")
             .insert(true)
@@ -445,7 +445,7 @@ impl LayoutBuilder {
             .insert(true)
             // IMAP
             .create("IMAP & POP3")
-            .icon(view! { <IconInbox/> })
+            .icon(view! { <IconInbox /> })
             .create("Authentication")
             .route("/imap-auth/edit")
             .insert(true)
@@ -461,7 +461,7 @@ impl LayoutBuilder {
             .insert(true)
             // Security
             .create("Security")
-            .icon(view! { <IconHandRaised/> })
+            .icon(view! { <IconHandRaised /> })
             // Fail2ban
             .create("Fail2ban")
             .route("/fail2ban/edit")
@@ -477,7 +477,7 @@ impl LayoutBuilder {
             .insert(true)
             // Telemetry
             .create("Telemetry")
-            .icon(view! { <IconSignal/> })
+            .icon(view! { <IconSignal /> })
             .create("Logging & Tracing")
             .route("/tracing")
             .insert(true)
@@ -499,7 +499,7 @@ impl LayoutBuilder {
             .insert(true)
             // SPAM Filter
             .create("Antispam")
-            .icon(view! { <IconShieldCheck/> })
+            .icon(view! { <IconShieldCheck /> })
             .create("Settings")
             .route("/spam-settings/edit")
             .insert(true)
@@ -536,7 +536,7 @@ impl LayoutBuilder {
             .insert(true)
             // Sieve Scripting
             .create("Scripting")
-            .icon(view! { <IconCodeBracket/> })
+            .icon(view! { <IconCodeBracket /> })
             .create("Settings")
             .route("/sieve-settings/edit")
             .insert(true)
@@ -551,7 +551,7 @@ impl LayoutBuilder {
             .insert(true)
             .insert(true)
             .create("Management")
-            .icon(view! { <IconServer/> })
+            .icon(view! { <IconServer /> })
             .raw_route(manage_url)
             .insert(true)
             .menu_items

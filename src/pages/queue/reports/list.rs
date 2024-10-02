@@ -165,7 +165,7 @@ pub fn ReportList() -> impl IntoView {
                         })
                     >
 
-                        <IconRefresh/>
+                        <IconRefresh />
                     </ToolbarButton>
 
                     <ToolbarButton
@@ -199,7 +199,7 @@ pub fn ReportList() -> impl IntoView {
                         })
                     >
 
-                        <IconCancel/>
+                        <IconCancel />
                     </ToolbarButton>
 
                 </Toolbar>
@@ -214,7 +214,7 @@ pub fn ReportList() -> impl IntoView {
                         Some(Err(err)) => {
                             total_results.set(Some(0));
                             alert.set(Alert::from(err));
-                            Some(view! { <Skeleton/> }.into_view())
+                            Some(view! { <Skeleton /> }.into_view())
                         }
                         Some(Ok(reports)) if !reports.items.is_empty() => {
                             total_results.set(Some(reports.total as u32));
@@ -244,7 +244,7 @@ pub fn ReportList() -> impl IntoView {
                                             key=|report| report.id.clone()
                                             let:report
                                         >
-                                            <ReportItem report/>
+                                            <ReportItem report />
                                         </For>
 
                                     </ColumnList>
@@ -299,7 +299,7 @@ fn ReportItem(report: AggregateReportId) -> impl IntoView {
         <tr>
             <ListItem>
                 <label class="flex">
-                    <SelectItem item_id=report.id.to_string()/>
+                    <SelectItem item_id=report.id.to_string() />
 
                     <span class="sr-only">Checkbox</span>
                 </label>
@@ -321,7 +321,7 @@ fn ReportItem(report: AggregateReportId) -> impl IntoView {
                             AggregateReportType::Dmarc => {
                                 view! {
                                     <Badge color=Color::Blue>
-                                        <IconEnvelope attr:class="flex-shrink-0 size-3"/>
+                                        <IconEnvelope attr:class="flex-shrink-0 size-3" />
                                         DMARC
                                     </Badge>
                                 }
@@ -330,7 +330,7 @@ fn ReportItem(report: AggregateReportId) -> impl IntoView {
                             AggregateReportType::Tls => {
                                 view! {
                                     <Badge color=Color::Green>
-                                        <IconShieldCheck attr:class="flex-shrink-0 size-3"/>
+                                        <IconShieldCheck attr:class="flex-shrink-0 size-3" />
                                         TLS
                                     </Badge>
                                 }

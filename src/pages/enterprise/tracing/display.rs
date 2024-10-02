@@ -62,7 +62,7 @@ pub fn SpanDisplay() -> impl IntoView {
     provide_context(create_rw_signal::<HashSet<String>>(HashSet::new()));
 
     view! {
-        <Alerts/>
+        <Alerts />
         <Transition fallback=Skeleton>
 
             {move || match fetch_report.get() {
@@ -81,7 +81,7 @@ pub fn SpanDisplay() -> impl IntoView {
                 }
                 Some(Ok(events)) => {
                     if events.len() >= 2 {
-                        Some(view! { <Span events=events/> }.into_view())
+                        Some(view! { <Span events=events /> }.into_view())
                     } else {
                         log::warn!("Invalid span: {events:?}");
                         use_navigate()("/manage/tracing/delivery", Default::default());
@@ -113,23 +113,23 @@ fn Span(events: Vec<Event>) -> impl IntoView {
         <Card>
             <CardItem title="Span Type" contents=span_type.to_string()>
 
-                <IconDocumentChartBar attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconDocumentChartBar attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Received" contents=start_date subcontents=start_time>
 
-                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Duration" contents=span_duration>
 
-                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
 
             <CardItem title="Events" contents=num_events>
 
-                <IconAlertTriangle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconAlertTriangle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
 
@@ -147,7 +147,7 @@ fn Span(events: Vec<Event>) -> impl IntoView {
                     {events
                         .into_iter()
                         .map(|event| {
-                            view! { <EventView event=event span_start=span_start.into()/> }
+                            view! { <EventView event=event span_start=span_start.into() /> }
                         })
                         .collect_view()}
                 </div>
@@ -231,15 +231,15 @@ impl Event {
         let id = self.typ.as_str();
 
         if id.ends_with("-start") || id.ends_with("-end") {
-            view! { <IconClock size=SIZE attr:class=CLASS/> }
+            view! { <IconClock size=SIZE attr:class=CLASS /> }
         } else if id.contains("failed")
             || id.contains("error")
             || id.contains("invalid")
             || id.contains("reject")
         {
-            view! { <IconExclamationCircle size=SIZE attr:class=CLASS/> }
+            view! { <IconExclamationCircle size=SIZE attr:class=CLASS /> }
         } else {
-            view! { <IconChatBubbleBottom size=SIZE attr:class=CLASS/> }
+            view! { <IconChatBubbleBottom size=SIZE attr:class=CLASS /> }
         }
     }
 }

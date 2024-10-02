@@ -57,8 +57,7 @@ pub fn ListTable(
                                 } else {
                                     None
                                 }
-                            }}
-                            <div>
+                            }} <div>
                                 <div class="inline-flex gap-x-2">{(toolbar.children)()}</div>
                             </div>
 
@@ -80,7 +79,7 @@ pub fn ListTable(
 pub fn ListSection(children: Children) -> impl IntoView {
     view! {
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <Alerts/>
+            <Alerts />
             {children()}
         </div>
     }
@@ -152,7 +151,7 @@ pub fn ZeroResults(
                         on:click=move |_| button_action.as_ref().unwrap().call(())
                     >
 
-                        <IconPlus/>
+                        <IconPlus />
                         {button_text.get()}
                     </button>
 

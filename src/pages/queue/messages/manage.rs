@@ -186,7 +186,7 @@ pub fn QueueManage() -> impl IntoView {
     provide_context(selected);
 
     view! {
-        <Alerts/>
+        <Alerts />
         <Transition fallback=Skeleton>
 
             {move || match fetch_message.get() {
@@ -242,7 +242,7 @@ pub fn QueueManage() -> impl IntoView {
                                     )
                                 >
 
-                                    <IconEnvelope attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconEnvelope attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
                                 </CardItem>
                                 <CardItem
@@ -251,12 +251,12 @@ pub fn QueueManage() -> impl IntoView {
                                     subcontents=message.created.format_date_time()
                                 >
 
-                                    <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
                                 </CardItem>
                                 <CardItem title="Size" contents=format_size(message.size, DECIMAL)>
 
-                                    <IconScale attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconScale attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
                                 </CardItem>
                                 <CardItem
@@ -270,7 +270,7 @@ pub fn QueueManage() -> impl IntoView {
                                     subcontents_bold=message.env_id.unwrap_or_default()
                                 >
 
-                                    <IconId attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconId attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
                                 </CardItem>
 
@@ -286,7 +286,7 @@ pub fn QueueManage() -> impl IntoView {
                                         .unwrap_or("N/A".to_string())
                                 >
 
-                                    <IconLaunch attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconLaunch attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
                                 </CardItem>
                                 <CardItem
@@ -299,7 +299,7 @@ pub fn QueueManage() -> impl IntoView {
                                         .unwrap_or("N/A".to_string())
                                 >
 
-                                    <IconBell attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconBell attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
                                 </CardItem>
                                 <CardItem
@@ -312,7 +312,7 @@ pub fn QueueManage() -> impl IntoView {
                                         .unwrap_or("N/A".to_string())
                                 >
 
-                                    <IconCancel attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconCancel attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
                                 </CardItem>
                                 <CardItem
@@ -324,7 +324,7 @@ pub fn QueueManage() -> impl IntoView {
                                     }
                                 >
 
-                                    <IconAlertTriangle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                                    <IconAlertTriangle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
                                 </CardItem>
 
@@ -371,7 +371,7 @@ pub fn QueueManage() -> impl IntoView {
                                             })
                                         >
 
-                                            <IconLaunch/>
+                                            <IconLaunch />
                                         </ToolbarButton>
                                         <ToolbarButton
                                             text=Signal::derive(move || {
@@ -417,7 +417,7 @@ pub fn QueueManage() -> impl IntoView {
                                             })
                                         >
 
-                                            <IconCancel/>
+                                            <IconCancel />
                                         </ToolbarButton>
 
                                     </Toolbar>
@@ -490,7 +490,7 @@ pub fn QueueManage() -> impl IntoView {
                                                     <tr>
                                                         <ListItem>
                                                             <label class="flex">
-                                                                <SelectItem item_id=item_id/>
+                                                                <SelectItem item_id=item_id />
 
                                                                 <span class="sr-only">Checkbox</span>
                                                             </label>
@@ -653,7 +653,7 @@ pub fn QueueManage() -> impl IntoView {
                                                     }
                                                 >
 
-                                                    <IconEnvelope/>
+                                                    <IconEnvelope />
                                                 </Button>
 
                                             </div>

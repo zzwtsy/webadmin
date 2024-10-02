@@ -49,7 +49,7 @@ pub fn ArfReportDisplay(
             if !v.is_empty() {
                 Some(view! {
                     <ReportItem label=k>
-                        <ReportTextValue value=v/>
+                        <ReportTextValue value=v />
                     </ReportItem>
                 })
             } else {
@@ -95,7 +95,7 @@ pub fn ArfReportDisplay(
                 let v = v?;
                 Some(view! {
                     <ReportItem label=k.to_string()>
-                        <ReportTextValue value=v/>
+                        <ReportTextValue value=v />
                     </ReportItem>
                 })
             })
@@ -113,22 +113,22 @@ pub fn ArfReportDisplay(
         <Card>
             <CardItem title="Report Type" contents=report.feedback_type.to_string()>
 
-                <IconDocumentChartBar attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconDocumentChartBar attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Incidents" contents=std::cmp::max(report.incidents, 1).to_string()>
 
-                <IconAlertTriangle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconAlertTriangle attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Received" contents=received_date subcontents=received_time>
 
-                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
             <CardItem title="Arrival" contents=arrival_date subcontents=arrival_time>
 
-                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600"/>
+                <IconClock attr:class="flex-shrink-0 size-5 text-gray-400 dark:text-gray-600" />
 
             </CardItem>
 
@@ -137,41 +137,41 @@ pub fn ArfReportDisplay(
         <ReportView>
             <ReportSection title="Report Details">
                 <ReportItem label="Reported Domain" hide=report.reported_domain.is_empty()>
-                    <ReportTextValue value=report.reported_domain.join(",")/>
+                    <ReportTextValue value=report.reported_domain.join(",") />
                 </ReportItem>
                 <ReportItem label="Reported URI" hide=report.reported_uri.is_empty()>
-                    <ReportTextValue value=report.reported_uri.join(",")/>
+                    <ReportTextValue value=report.reported_uri.join(",") />
                 </ReportItem>
 
                 <ReportItem
                     label="Authentication Results"
                     hide=report.authentication_results.is_empty()
                 >
-                    <ReportTextValue value=report.authentication_results.join(", ")/>
+                    <ReportTextValue value=report.authentication_results.join(", ") />
                 </ReportItem>
                 <ReportItem label="Original Mail From" hide=report.original_mail_from.is_none()>
-                    <ReportTextValue value=report.original_mail_from.unwrap_or_default()/>
+                    <ReportTextValue value=report.original_mail_from.unwrap_or_default() />
                 </ReportItem>
                 <ReportItem label="Original Rcpt To" hide=report.original_rcpt_to.is_none()>
-                    <ReportTextValue value=report.original_rcpt_to.unwrap_or_default()/>
+                    <ReportTextValue value=report.original_rcpt_to.unwrap_or_default() />
                 </ReportItem>
                 <ReportItem label="Original Envelope Id" hide=report.original_envelope_id.is_none()>
-                    <ReportTextValue value=report.original_envelope_id.unwrap_or_default()/>
+                    <ReportTextValue value=report.original_envelope_id.unwrap_or_default() />
                 </ReportItem>
                 <ReportItem label="Reporting MTA" hide=report.reporting_mta.is_none()>
-                    <ReportTextValue value=report.reporting_mta.unwrap_or_default()/>
+                    <ReportTextValue value=report.reporting_mta.unwrap_or_default() />
                 </ReportItem>
                 <ReportItem label="Source IP" hide=report.source_ip.is_none()>
                     <ReportTextValue value=report
                         .source_ip
                         .map(|ip| ip.to_string())
-                        .unwrap_or_default()/>
+                        .unwrap_or_default() />
                 </ReportItem>
                 <ReportItem label="Source Port" hide=has_port>
-                    <ReportTextValue value=report.source_port.to_string()/>
+                    <ReportTextValue value=report.source_port.to_string() />
                 </ReportItem>
                 <ReportItem label="User Agent" hide=report.user_agent.is_none()>
-                    <ReportTextValue value=report.user_agent.unwrap_or_default()/>
+                    <ReportTextValue value=report.user_agent.unwrap_or_default() />
                 </ReportItem>
 
                 {extra}

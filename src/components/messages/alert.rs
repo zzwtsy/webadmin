@@ -157,7 +157,7 @@ pub fn Alerts() -> impl IntoView {
                             >
 
                                 <span class="sr-only">Dismiss</span>
-                                <IconXMark/>
+                                <IconXMark />
 
                             </button>
                         </div>

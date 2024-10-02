@@ -212,7 +212,7 @@ pub fn IncomingReportList() -> impl IntoView {
                         })
                     >
 
-                        <IconRefresh/>
+                        <IconRefresh />
                     </ToolbarButton>
 
                     <ToolbarButton
@@ -246,7 +246,7 @@ pub fn IncomingReportList() -> impl IntoView {
                         })
                     >
 
-                        <IconCancel/>
+                        <IconCancel />
                     </ToolbarButton>
 
                 </Toolbar>
@@ -261,7 +261,7 @@ pub fn IncomingReportList() -> impl IntoView {
                         Some(Err(err)) => {
                             total_results.set(Some(0));
                             alert.set(Alert::from(err));
-                            Some(view! { <Skeleton/> }.into_view())
+                            Some(view! { <Skeleton /> }.into_view())
                         }
                         Some(Ok(reports)) if !reports.items.is_empty() => {
                             total_results.set(Some(reports.total as u32));
@@ -318,7 +318,7 @@ pub fn IncomingReportList() -> impl IntoView {
                                             key=|report| report.id().to_string()
                                             let:report
                                         >
-                                            <ReportItem report=report/>
+                                            <ReportItem report=report />
                                         </For>
 
                                     </ColumnList>
@@ -503,7 +503,7 @@ fn ReportItem(report: IncomingReportSummary) -> impl IntoView {
         <tr>
             <ListItem>
                 <label class="flex">
-                    <SelectItem item_id=item_id/>
+                    <SelectItem item_id=item_id />
 
                     <span class="sr-only">Checkbox</span>
                 </label>

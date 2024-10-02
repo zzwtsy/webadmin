@@ -102,7 +102,7 @@ pub fn StackedInput(
                                     }
                                 >
 
-                                    <IconXMark/>
+                                    <IconXMark />
 
                                 </button>
                             </div>
@@ -131,7 +131,7 @@ pub fn StackedInput(
                 }
             >
 
-                <IconPlus attr:class="flex-shrink-0 size-3.5"/>
+                <IconPlus attr:class="flex-shrink-0 size-3.5" />
                 {add_button_text}
             </button>
         </p>

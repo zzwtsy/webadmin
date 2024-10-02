@@ -86,7 +86,7 @@ pub fn Modal() -> impl IntoView {
                                     >
 
                                         <span class="sr-only">Close</span>
-                                        <IconXMark/>
+                                        <IconXMark />
 
                                     </button>
                                 </div>

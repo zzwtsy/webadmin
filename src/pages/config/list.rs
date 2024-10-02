@@ -233,7 +233,7 @@ pub fn SettingsList() -> impl IntoView {
                         })
                     >
 
-                        <IconTrash/>
+                        <IconTrash />
                     </ToolbarButton>
 
                     <ToolbarButton
@@ -245,7 +245,7 @@ pub fn SettingsList() -> impl IntoView {
                         })
                     >
 
-                        <IconRefresh/>
+                        <IconRefresh />
                     </ToolbarButton>
 
                     <ToolbarButton
@@ -262,7 +262,7 @@ pub fn SettingsList() -> impl IntoView {
                         }
                     >
 
-                        <IconAdd size=16 attr:class="flex-shrink-0 size-3"/>
+                        <IconAdd size=16 attr:class="flex-shrink-0 size-3" />
                     </ToolbarButton>
 
                 </Toolbar>
@@ -277,7 +277,7 @@ pub fn SettingsList() -> impl IntoView {
                         Some(Err(err)) => {
                             total_results.set(Some(0));
                             alert.set(Alert::from(err));
-                            Some(view! { <Skeleton/> }.into_view())
+                            Some(view! { <Skeleton /> }.into_view())
                         }
                         Some(Ok(settings)) if !settings.items.is_empty() => {
                             total_results.set(Some(settings.total as u32));
@@ -317,7 +317,7 @@ pub fn SettingsList() -> impl IntoView {
 
                                             let:settings
                                         >
-                                            <SettingsItem settings schema=schema.clone()/>
+                                            <SettingsItem settings schema=schema.clone() />
                                         </For>
 
                                     </ColumnList>
@@ -413,7 +413,7 @@ fn SettingsItem(settings: Settings, schema: Arc<Schema>) -> impl IntoView {
         <tr>
             <ListItem>
                 <label class="flex">
-                    <SelectItem item_id=setting_id/>
+                    <SelectItem item_id=setting_id />
 
                     <span class="sr-only">Checkbox</span>
                 </label>

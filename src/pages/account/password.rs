@@ -87,16 +87,16 @@ pub fn ChangePassword() -> impl IntoView {
             <FormSection>
                 <Show when=move || !show_totp.get()>
                     <FormItem label="Current Password">
-                        <InputPassword element=FormElement::new("old-password", data)/>
+                        <InputPassword element=FormElement::new("old-password", data) />
                     </FormItem>
                     <FormItem label="New Password">
-                        <InputPassword element=FormElement::new("new-password", data)/>
+                        <InputPassword element=FormElement::new("new-password", data) />
                     </FormItem>
                 </Show>
 
                 <Show when=move || show_totp.get()>
                     <FormItem label="TOTP Token">
-                        <InputText element=FormElement::new("totp-code", data)/>
+                        <InputText element=FormElement::new("totp-code", data) />
                     </FormItem>
                 </Show>
 
