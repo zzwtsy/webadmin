@@ -44,6 +44,7 @@ pub fn Login() -> impl IntoView {
     let alert = use_alerts();
     let auth_token = use_context::<RwSignal<AccessToken>>().unwrap();
     let query = use_query_map();
+    let i18n = use_i18n();
 
     let login_action = create_action(
         move |(username, password, base_url): &(String, String, String)| {
@@ -59,7 +60,7 @@ pub fn Login() -> impl IntoView {
 
                         if default_url.is_empty() {
                             alert.set(Alert::error(
-                                "You are not authorized to access this service.",
+                                i18n.get_keys().login_you_are_not_authorized_to_access_this_service,
                             ));
                             return;
                         }
@@ -129,8 +130,6 @@ pub fn Login() -> impl IntoView {
                 .is_some())
             && !show_totp.get()
     });
-
-    let i18n = use_i18n();
 
     view! {
         <Body class="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-16" />

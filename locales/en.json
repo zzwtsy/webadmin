@@ -3,5 +3,6 @@
   "login_remember_me": "Remember me",
   "login_password": "Password",
   "login_login": "Login",
-  "login_host": "Host"
+  "login_host": "Host",
+  "login_you_are_not_authorized_to_access_this_service": "You are not authorized to access this service."
 }
