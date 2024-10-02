@@ -52,6 +52,9 @@ pub struct Principal {
     pub emails: PrincipalValue,
 
     #[serde(default, skip_serializing_if = "PrincipalValue::is_none")]
+    pub urls: PrincipalValue,
+
+    #[serde(default, skip_serializing_if = "PrincipalValue::is_none")]
     #[serde(rename = "memberOf")]
     pub member_of: PrincipalValue,
 
@@ -89,7 +92,11 @@ pub enum PrincipalType {
     Domain = 7,
     Tenant = 8,
     Role = 9,
+    ApiKey = 10,
+    OauthClient = 11,
 }
+
+pub const MAX_TYPE_ID: usize = 11;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -109,6 +116,7 @@ pub enum PrincipalField {
     EnabledPermissions,
     DisabledPermissions,
     Picture,
+    Urls,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
@@ -142,7 +150,6 @@ impl Principal {
         self.id.is_none()
             && self.typ.is_none()
             && self.name.is_none()
-            && self.secrets.is_none()
             && self.emails.is_none()
             && self.member_of.is_none()
             && self.members.is_none()
@@ -175,7 +182,12 @@ impl Principal {
             }
         }
 
-        if current.quota != changes.quota {
+        if current.quota != changes.quota
+            && matches!(
+                current.typ,
+                Some(PrincipalType::Individual | PrincipalType::Group | PrincipalType::Tenant)
+            )
+        {
             updates.push(PrincipalUpdate {
                 action: PrincipalAction::Set,
                 field: PrincipalField::Quota,
@@ -246,6 +258,7 @@ impl Principal {
                 current.disabled_permissions,
                 changes.disabled_permissions,
             ),
+            (PrincipalField::Urls, current.urls, changes.urls),
         ] {
             let current = current.unwrap_string_list();
             let change = change.unwrap_string_list();
@@ -388,6 +401,8 @@ impl PrincipalType {
             PrincipalType::Domain => "domain",
             PrincipalType::Tenant => "tenant",
             PrincipalType::Role => "role",
+            PrincipalType::ApiKey => "apiKey",
+            PrincipalType::OauthClient => "oauthClient",
         }
     }
 
@@ -402,6 +417,8 @@ impl PrincipalType {
             PrincipalType::Domain => "Domain",
             PrincipalType::Tenant => "Tenant",
             PrincipalType::Role => "Role",
+            PrincipalType::ApiKey => "API Key",
+            PrincipalType::OauthClient => "OAuth Client",
         }
     }
 
@@ -425,6 +442,10 @@ impl PrincipalType {
             (PrincipalType::Tenant, true) => "tenants",
             (PrincipalType::Role, false) => "role",
             (PrincipalType::Role, true) => "roles",
+            (PrincipalType::ApiKey, false) => "API key",
+            (PrincipalType::ApiKey, true) => "API keys",
+            (PrincipalType::OauthClient, false) => "OAuth client",
+            (PrincipalType::OauthClient, true) => "OAuth clients",
         }
     }
 
@@ -436,6 +457,8 @@ impl PrincipalType {
             PrincipalType::Role => "roles",
             PrincipalType::Tenant => "tenants",
             PrincipalType::Domain => "domains",
+            PrincipalType::ApiKey => "api-keys",
+            PrincipalType::OauthClient => "oauth-clients",
             _ => unimplemented!("resource_name for {:?}", self),
         }
     }
@@ -455,6 +478,8 @@ impl FromStr for PrincipalType {
             "domain" => Ok(PrincipalType::Domain),
             "tenant" => Ok(PrincipalType::Tenant),
             "role" => Ok(PrincipalType::Role),
+            "apiKey" => Ok(PrincipalType::ApiKey),
+            "oauthClient" => Ok(PrincipalType::OauthClient),
             _ => Err(format!("Invalid PrincipalType: {}", s)),
         }
     }
@@ -616,16 +641,10 @@ impl<'de> serde::Deserialize<'de> for StringOrU64 {
 }
 
 pub static PERMISSIONS: &[(&str, &str)] = &[
-    ("impersonate", "Allows acting on behalf of another user"),
-    ("unlimited-requests", "Removes request limits or quotas"),
-    (
-        "unlimited-uploads",
-        "Removes upload size or frequency limits",
-    ),
-    (
-        "delete-system-folders",
-        "Allows deletion of critical system folders",
-    ),
+    ("impersonate", "Act on behalf of another user"),
+    ("unlimited-requests", "Perform unlimited requests"),
+    ("unlimited-uploads", "Upload unlimited data"),
+    ("delete-system-folders", "Delete system folders"),
     ("message-queue-list", "View message queue"),
     (
         "message-queue-get",
@@ -633,25 +652,19 @@ pub static PERMISSIONS: &[(&str, &str)] = &[
     ),
     ("message-queue-update", "Modify queued messages"),
     ("message-queue-delete", "Remove messages from the queue"),
-    ("outgoing-report-list", "View reports for outgoing emails"),
-    (
-        "outgoing-report-get",
-        "Retrieve specific outgoing email reports",
-    ),
-    ("outgoing-report-delete", "Remove outgoing email reports"),
-    ("incoming-report-list", "View reports for incoming emails"),
-    (
-        "incoming-report-get",
-        "Retrieve specific incoming email reports",
-    ),
-    ("incoming-report-delete", "Remove incoming email reports"),
+    ("outgoing-report-list", "View outgoing reports"),
+    ("outgoing-report-get", "Retrieve specific outgoing reports"),
+    ("outgoing-report-delete", "Remove outgoing reports"),
+    ("incoming-report-list", "View incoming reports"),
+    ("incoming-report-get", "Retrieve specific incoming reports"),
+    ("incoming-report-delete", "Remove incoming reports"),
     ("settings-list", "View system settings"),
     ("settings-update", "Modify system settings"),
     ("settings-delete", "Remove system settings"),
     ("settings-reload", "Refresh system settings"),
-    ("individual-list", "View list of individual users"),
-    ("individual-get", "Retrieve specific user information"),
-    ("individual-update", "Modify user information"),
+    ("individual-list", "View list of user accounts"),
+    ("individual-get", "Retrieve specific account information"),
+    ("individual-update", "Modify user account information"),
     ("individual-delete", "Remove user accounts"),
     ("individual-create", "Add new user accounts"),
     ("group-list", "View list of user groups"),
@@ -682,26 +695,17 @@ pub static PERMISSIONS: &[(&str, &str)] = &[
     ("role-create", "Create new roles"),
     ("role-update", "Modify role information"),
     ("role-delete", "Remove roles"),
-    (
-        "principal-list",
-        "View list of principals (users or system entities)",
-    ),
+    ("principal-list", "View list of principals"),
     ("principal-get", "Retrieve specific principal information"),
     ("principal-create", "Create new principals"),
     ("principal-update", "Modify principal information"),
     ("principal-delete", "Remove principals"),
-    ("blob-fetch", "Retrieve binary large objects"),
-    ("purge-blob-store", "Clear the blob storage"),
-    ("purge-data-store", "Clear the data storage"),
-    ("purge-lookup-store", "Clear the lookup storage"),
-    (
-        "purge-account",
-        "Completely remove an account and all associated data",
-    ),
-    (
-        "fts-reindex",
-        "Rebuild the full-text search index for accounts",
-    ),
+    ("blob-fetch", "Retrieve arbitrary blobs"),
+    ("purge-blob-store", "Purge the blob storage"),
+    ("purge-data-store", "Purge the data storage"),
+    ("purge-lookup-store", "Purge the lookup storage"),
+    ("purge-account", "Purge user accounts"),
+    ("fts-reindex", "Rebuild the full-text search index"),
     ("undelete", "Restore deleted items"),
     (
         "dkim-signature-create",
@@ -711,22 +715,19 @@ pub static PERMISSIONS: &[(&str, &str)] = &[
     ("update-spam-filter", "Modify spam filter settings"),
     ("update-webadmin", "Modify web admin interface settings"),
     ("logs-view", "Access system logs"),
-    ("sieve-run", "Execute Sieve scripts for email filtering"),
+    ("sieve-run", "Execute Sieve scripts from the REST API"),
     ("restart", "Restart the email server"),
-    ("tracing-list", "View list of system traces"),
+    ("tracing-list", "View stored traces"),
     ("tracing-get", "Retrieve specific trace information"),
-    ("tracing-live", "View real-time system traces"),
-    ("metrics-list", "View list of system metrics"),
-    ("metrics-live", "View real-time system metrics"),
-    ("authenticate", "Perform authentication"),
-    ("authenticate-oauth", "Perform OAuth authentication"),
+    ("tracing-live", "Perform real-time tracing"),
+    ("metrics-list", "View stored metrics"),
+    ("metrics-live", "View real-time metrics"),
+    ("authenticate", "Authenticate"),
+    ("authenticate-oauth", "Authenticate via OAuth"),
     ("email-send", "Send emails"),
     ("email-receive", "Receive emails"),
-    (
-        "manage-encryption",
-        "Handle encryption settings and operations",
-    ),
-    ("manage-passwords", "Manage user passwords"),
+    ("manage-encryption", "Manage encryption-at-rest settings"),
+    ("manage-passwords", "Manage account passwords"),
     ("jmap-email-get", "Retrieve emails via JMAP"),
     ("jmap-mailbox-get", "Retrieve mailboxes via JMAP"),
     ("jmap-thread-get", "Retrieve email threads via JMAP"),
@@ -872,4 +873,16 @@ pub static PERMISSIONS: &[(&str, &str)] = &[
         "sieve-have-space",
         "Check available space for Sieve scripts",
     ),
+    ("api-key-list", "View API keys"),
+    ("api-key-get", "Retrieve specific API keys"),
+    ("api-key-create", "Create new API keys"),
+    ("api-key-update", "Modify API keys"),
+    ("api-key-delete", "Remove API keys"),
+    ("oauth-client-list", "View OAuth clients"),
+    ("oauth-client-get", "Retrieve specific OAuth clients"),
+    ("oauth-client-create", "Create new OAuth clients"),
+    ("oauth-client-update", "Modify OAuth clients"),
+    ("oauth-client-delete", "Remove OAuth clients"),
+    ("oauth-client-registration", "Register OAuth clients"),
+    ("oauth-client-override", "Override OAuth client settings"),
 ];
