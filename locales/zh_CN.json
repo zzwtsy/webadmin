@@ -1,8 +1,11 @@
 {
-  "login_sign_in": "登录",
-  "login_remember_me": "记住我",
-  "login_password": "密码",
-  "login_login": "账户",
-  "login_host": "主机 Url",
-  "login_you_are_not_authorized_to_access_this_service": "您没有访问此服务的权限。"
+  "sign_in": "登录",
+  "remember_me": "记住我",
+  "password": "密码",
+  "login": "账户",
+  "host": "主机",
+  "you_are_not_authorized_to_access_this_service": "您没有访问此服务的权限。",
+  "oops_something_went_wrong": "哎呀，出了点问题。",
+  "sorry_we_could_not_find_your_page": "抱歉，我们无法找到您的页面。",
+  "back_to_manage": "返回管理页面"
 }
