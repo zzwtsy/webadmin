@@ -27,7 +27,7 @@ use crate::{
         http::{self, Error, HttpRequest},
         oauth::use_authorization,
         schema::{Builder, Schemas, SelectType, Source, Transformer, Type, Validator},
-    },
+    }, i18n::use_i18n,
 };
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]
@@ -59,6 +59,8 @@ pub enum EncryptionMethod {
 
 #[component]
 pub fn ManageCrypto() -> impl IntoView {
+    let i18n = use_i18n();
+    let crypto_i18n= i18n.get_keys().account_crypto;
     let auth = use_authorization();
     let alert = use_alerts();
     let show_totp = create_rw_signal(false);
@@ -105,22 +107,14 @@ pub fn ManageCrypto() -> impl IntoView {
                     show_totp.set(false);
 
                     if !is_disable {
-                        Alert::success("Encryption-at-rest enabled").with_details(concat!(
-                            "Automatic encryption of plain text messages has been enabled. ",
-                            "From now on all incoming plain-text messages will be encrypted ",
-                            "before they reach your mailbox."
-                        ))
+                        Alert::success(crypto_i18n.encryption_at_rest_enabled_message).with_details(i18n.get_keys().account_crypto.enable_encryption_message)
                     } else {
-                        Alert::success("Encryption-at-rest disabled").with_details(concat!(
-                            "Automatic encryption of plain text messages has been disabled. ",
-                            "From now on all incoming messages will be stored ",
-                            "in their original form."
-                        ))
+                        Alert::success(crypto_i18n.encryption_at_rest_disabled_message).with_details(i18n.get_keys().account_crypto.disable_encryption_message)
                     }
                     .without_timeout()
                 }
-                Err(Error::Unauthorized) => Alert::warning("Incorrect password")
-                    .with_details("The password you entered is incorrect"),
+                Err(Error::Unauthorized) => Alert::warning(crypto_i18n.incorrect_password_title)
+                    .with_details(crypto_i18n.incorrect_password_message),
                 Err(Error::TotpRequired) => {
                     show_totp.set(true);
                     return;
@@ -135,8 +129,8 @@ pub fn ManageCrypto() -> impl IntoView {
 
     view! {
         <Form
-            title="Encryption-at-rest"
-            subtitle="Automatically encrypt plain-text messages before they reach your mailbox."
+            title=crypto_i18n.encryption_at_rest_title
+            subtitle=crypto_i18n.encryption_at_rest_subtitle
         >
 
             <Transition fallback=Skeleton set_pending>
@@ -162,25 +156,25 @@ pub fn ManageCrypto() -> impl IntoView {
                             view! {
                                 <FormSection>
                                     <Show when=move || show_totp.get()>
-                                        <FormItem label="TOTP Token">
+                                        <FormItem label=crypto_i18n.totp_token_label>
                                             <InputText element=FormElement::new("totp-code", data) />
                                         </FormItem>
                                     </Show>
 
                                     <Show when=move || !show_totp.get()>
-                                        <FormItem label="Current Password">
+                                        <FormItem label=crypto_i18n.current_password_label>
                                             <InputPassword element=FormElement::new("password", data) />
                                         </FormItem>
                                         <FormItem
-                                            label="Encryption type"
-                                            tooltip="Whether to use OpenPGP or S/MIME for encryption."
+                                            label=crypto_i18n.encryption_type_label
+                                            tooltip=crypto_i18n.encryption_type_tooltip
                                         >
                                             <Select element=FormElement::new("type", data) />
                                         </FormItem>
 
                                         <FormItem
-                                            label="Algorithm"
-                                            tooltip="The encryption algorithms to use"
+                                            label=crypto_i18n.algorithm_label
+                                            tooltip=crypto_i18n.algorithm_tooltip
                                             hide=has_no_crypto
                                         >
                                             <Select element=FormElement::new("algo", data) />
@@ -188,8 +182,8 @@ pub fn ManageCrypto() -> impl IntoView {
                                         </FormItem>
 
                                         <FormItem
-                                            label="Certificates"
-                                            tooltip="The armored OpenPGP certificate or S/MIME certificate in PEM format."
+                                            label=crypto_i18n.certificates_label
+                                            tooltip=crypto_i18n.certificates_tooltip
                                             hide=has_no_crypto
                                         >
                                             <TextArea element=FormElement::new("certs", data) />
@@ -208,7 +202,7 @@ pub fn ManageCrypto() -> impl IntoView {
             <FormButtonBar>
 
                 <Button
-                    text="Save changes"
+                    text=crypto_i18n.save_changes_button
                     color=Color::Blue
                     on_click=Callback::new(move |_| {
                         data.update(|data| {

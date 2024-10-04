@@ -1,0 +1,19 @@
+{
+    "encryption_at_rest_enabled_message": "已启用静态加密",
+    "enable_encryption_message": "已启用纯文本消息的自动加密。从现在起，所有传入的纯文本消息在到达您的邮箱之前都将被加密。",
+    "encryption_at_rest_disabled_message": "已禁用静态加密",
+    "disable_encryption_message": "已禁用纯文本消息的自动加密。从现在起，所有传入的消息将以其原始形式存储。",
+    "incorrect_password_title": "密码错误",
+    "incorrect_password_message": "您输入的密码不正确。",
+    "encryption_at_rest_title": "静态加密",
+    "encryption_at_rest_subtitle": "在消息到达您的邮箱之前自动加密纯文本消息。",
+    "totp_token_label": "TOTP 令牌",
+    "current_password_label": "当前密码",
+    "encryption_type_label": "加密类型",
+    "encryption_type_tooltip": "选择使用 OpenPGP 或 S/MIME 进行加密。",
+    "algorithm_label": "算法",
+    "algorithm_tooltip": "使用的加密算法。",
+    "certificates_label": "证书",
+    "certificates_tooltip": "以 PEM 格式的装甲 OpenPGP 证书或 S/MIME 证书。",
+    "save_changes_button": "保存更改"
+}

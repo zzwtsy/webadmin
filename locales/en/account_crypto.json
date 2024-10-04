@@ -1,0 +1,19 @@
+{
+    "encryption_at_rest_enabled_message": "Encryption-at-rest enabled",
+    "enable_encryption_message": "Automatic encryption of plain text messages has been enabled. From now on all incoming plain-text messages will be encrypted before they reach your mailbox.",
+    "encryption_at_rest_disabled_message": "Encryption-at-rest disabled",
+    "disable_encryption_message": "Automatic encryption of plain text messages has been disabled. From now on all incoming messages will be stored in their original form.",
+    "incorrect_password_title": "Incorrect password",
+    "incorrect_password_message": "The password you entered is incorrect",
+    "encryption_at_rest_title": "Encryption-at-rest",
+    "encryption_at_rest_subtitle": "Automatically encrypt plain-text messages before they reach your mailbox.",
+    "totp_token_label": "TOTP Token",
+    "current_password_label": "Current Password",
+    "encryption_type_label": "Encryption type",
+    "encryption_type_tooltip": "Whether to use OpenPGP or S/MIME for encryption.",
+    "algorithm_label": "Algorithm",
+    "algorithm_tooltip": "The encryption algorithms to use",
+    "certificates_label": "Certificates",
+    "certificates_tooltip": "The armored OpenPGP certificate or S/MIME certificate in PEM format.",
+    "save_changes_button": "Save changes"
+}
