@@ -34,14 +34,12 @@ use crate::{
         },
         skeleton::Skeleton,
         Color,
-    },
-    core::{
+    }, core::{
         http::{self, HttpRequest},
         oauth::use_authorization,
         schema::{Builder, Schemas, Transformer, Type, Validator},
         url::UrlBuilder,
-    },
-    pages::{
+    }, i18n::use_i18n, pages::{
         account::{AccountAuthRequest, AccountAuthResponse},
         maybe_plural, List,
     },
@@ -60,6 +58,8 @@ const PAGE_SIZE: u32 = 10;
 
 #[component]
 pub fn AppPasswords() -> impl IntoView {
+    let i18n = use_i18n();
+    let app_password_i18n = i18n.get_keys().account_app_password;
     let query = use_query_map();
     let page = create_memo(move |_| {
         query
@@ -182,7 +182,10 @@ pub fn AppPasswords() -> impl IntoView {
 
     view! {
         <ListSection>
-            <ListTable title="App Passwords" subtitle="Manage your application passwords">
+            <ListTable
+                title=app_password_i18n.app_passwords_title
+                subtitle=app_password_i18n.app_passwords_manage_description
+            >
                 <Toolbar slot>
                     <SearchBox
                         value=filter
@@ -199,23 +202,46 @@ pub fn AppPasswords() -> impl IntoView {
                     <ToolbarButton
                         text=Signal::derive(move || {
                             let ns = selected.get().len();
-                            if ns > 0 { format!("Delete ({ns})") } else { "Delete".to_string() }
+                            if ns > 0 {
+                                format!("{} ({})", app_password_i18n.delete_button, ns)
+                            } else {
+                                app_password_i18n.delete_button.to_string()
+                            }
                         })
 
                         color=Color::Red
                         on_click=Callback::new(move |_| {
                             let to_delete = selected.get().len();
                             if to_delete > 0 {
-                                let text = maybe_plural(to_delete, "password", "passwords");
                                 modal
                                     .set(
-                                        Modal::with_title("Confirm deletion")
+                                        Modal::with_title(app_password_i18n.confirm_deletion_title)
                                             .with_message(
-                                                format!(
-                                                    "Are you sure you want to delete {text}? This action cannot be undone.",
-                                                ),
+                                                if to_delete == 1 {
+                                                    i18n.get_keys()
+                                                        .account_app_password
+                                                        .confirm_deletion_message
+                                                        .one
+                                                } else {
+                                                    i18n.get_keys()
+                                                        .account_app_password
+                                                        .confirm_deletion_message
+                                                        .other
+                                                },
                                             )
-                                            .with_button(format!("Delete {text}"))
+                                            .with_button(
+                                                if to_delete == 1 {
+                                                    i18n.get_keys()
+                                                        .account_app_password
+                                                        .delete_confirmation_button
+                                                        .one
+                                                } else {
+                                                    i18n.get_keys()
+                                                        .account_app_password
+                                                        .delete_confirmation_button
+                                                        .other
+                                                },
+                                            )
                                             .with_dangerous_callback(move || {
                                                 delete_action
                                                     .dispatch(
@@ -233,7 +259,7 @@ pub fn AppPasswords() -> impl IntoView {
                     </ToolbarButton>
 
                     <ToolbarButton
-                        text=format!("Add {}", "password")
+                        text=app_password_i18n.add_password_button
                         color=Color::Blue
                         on_click=move |_| {
                             use_navigate()("/account/app-passwords/edit", Default::default());
@@ -292,9 +318,15 @@ pub fn AppPasswords() -> impl IntoView {
                             Some(
                                 view! {
                                     <ZeroResults
-                                        title="No results"
-                                        subtitle="Your search did not yield any results."
-                                        button_text=format!("Create a new {}", "password")
+                                        title=app_password_i18n.no_results_label
+                                        subtitle=i18n
+                                            .get_keys()
+                                            .account_app_password
+                                            .no_results_message
+                                        button_text=i18n
+                                            .get_keys()
+                                            .account_app_password
+                                            .create_new_password_label
 
                                         button_action=Callback::new(move |_| {
                                             use_navigate()(
@@ -369,6 +401,8 @@ fn PasswordItem(password: AppPassword) -> impl IntoView {
 
 #[component]
 pub fn AppPasswordCreate() -> impl IntoView {
+    let i18n = use_i18n();
+    let app_password_i18n = i18n.get_keys().account_app_password;
     let auth = use_authorization();
     let alert = use_alerts();
 
@@ -421,13 +455,16 @@ pub fn AppPasswordCreate() -> impl IntoView {
     });
 
     view! {
-        <Form title="Create App Password" subtitle="Create a new application password">
+        <Form
+            title=app_password_i18n.create_app_password_title
+            subtitle=app_password_i18n.create_app_password_description
+        >
 
             <FormSection>
-                <FormItem label="Application Name">
+                <FormItem label=app_password_i18n.application_name_label>
                     <InputText element=FormElement::new("name", data) />
                 </FormItem>
-                <FormItem label="Password">
+                <FormItem label=app_password_i18n.application_password_label>
                     <InputText element=FormElement::new("password", data) />
                 </FormItem>
 
@@ -435,7 +472,7 @@ pub fn AppPasswordCreate() -> impl IntoView {
 
             <FormButtonBar>
                 <Button
-                    text="Cancel"
+                    text=app_password_i18n.cancel_button
                     color=Color::Gray
                     on_click=move |_| {
                         use_navigate()("/account/app-passwords", Default::default());
@@ -443,7 +480,7 @@ pub fn AppPasswordCreate() -> impl IntoView {
                 />
 
                 <Button
-                    text="Create"
+                    text=app_password_i18n.create_button
                     color=Color::Blue
                     on_click=Callback::new(move |_| {
                         data.update(|data| {
