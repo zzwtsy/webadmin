@@ -1,0 +1,18 @@
+{
+    "two_factor_authentication_updated_message": "2FA 设置已更新",
+    "update_two_factor_authentication_success_message": "您的 2FA 设置已成功更新",
+    "incorrect_password_title": "密码错误",
+    "incorrect_password_message": "您输入的密码不正确。",
+    "two_factor_authentication_title": "双因素认证",
+    "two_factor_authentication_manage_description": "管理您的双因素认证设置",
+    "password_label": "密码",
+    "enable_2fa_password_tooltip": "输入当前密码以启用 2FA。",
+    "otp_code_label": "一次性密码 (OTP) 码",
+    "enable_2fa_otp_tooltip": "输入由您的验证器应用程序生成的代码以启用 2FA。",
+    "enable_2fa_button": "启用 2FA",
+    "invalid_otp_code_title": "无效的一次性密码 (OTP) 码",
+    "invalid_otp_code_message": "您输入的一次性密码 (OTP) 码无效。",
+    "disable_2fa_password_tooltip": "输入当前密码以禁用 2FA。",
+    "disable_2fa_otp_tooltip": "输入由您的验证器应用程序生成的代码以禁用 2FA。",
+    "disable_2fa_button": "禁用 2FA"
+}
