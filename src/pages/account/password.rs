@@ -18,17 +18,17 @@ use crate::{
         },
         messages::alert::{use_alerts, Alert},
         Color,
-    },
-    core::{
+    }, core::{
         http::{Error, HttpRequest},
         oauth::use_authorization,
         schema::{Builder, Schemas, Transformer, Type, Validator},
-    },
-    pages::account::AccountAuthRequest,
+    }, i18n::use_i18n, pages::account::AccountAuthRequest
 };
 
 #[component]
 pub fn ChangePassword() -> impl IntoView {
+    let i18n = use_i18n();
+    let password_i18n = i18n.get_keys().account_password;
     let auth = use_authorization();
     let alert = use_alerts();
     let (pending, set_pending) = create_signal(false);
@@ -60,15 +60,15 @@ pub fn ChangePassword() -> impl IntoView {
                 Ok(_) => {
                     show_totp.set(false);
 
-                    Alert::success("Password changed")
-                        .with_details("Your password has been changed successfully")
+                    Alert::success(password_i18n.password_changed_success_title)
+                        .with_details(password_i18n.password_change_success_message)
                         .without_timeout()
                 }
                 Err(Error::Unauthorized) => {
                     show_totp.set(false);
 
-                    Alert::warning("Incorrect password")
-                        .with_details("The password you entered is incorrect")
+                    Alert::warning(password_i18n.incorrect_password_title)
+                        .with_details(password_i18n.incorrect_password_message)
                 }
                 Err(Error::TotpRequired) => {
                     show_totp.set(true);
@@ -83,19 +83,19 @@ pub fn ChangePassword() -> impl IntoView {
     });
 
     view! {
-        <Form title="Change Password" subtitle="Update your account password.">
+        <Form title=password_i18n.change_password_title subtitle=password_i18n.change_password_subtitle>
             <FormSection>
                 <Show when=move || !show_totp.get()>
-                    <FormItem label="Current Password">
+                    <FormItem label=password_i18n.current_password_label>
                         <InputPassword element=FormElement::new("old-password", data) />
                     </FormItem>
-                    <FormItem label="New Password">
+                    <FormItem label=password_i18n.new_password_label>
                         <InputPassword element=FormElement::new("new-password", data) />
                     </FormItem>
                 </Show>
 
                 <Show when=move || show_totp.get()>
-                    <FormItem label="TOTP Token">
+                    <FormItem label=password_i18n.totp_token_label>
                         <InputText element=FormElement::new("totp-code", data) />
                     </FormItem>
                 </Show>
@@ -105,7 +105,7 @@ pub fn ChangePassword() -> impl IntoView {
             <FormButtonBar>
 
                 <Button
-                    text="Change Password"
+                    text=password_i18n.change_password_button
                     color=Color::Blue
                     on_click=Callback::new(move |_| {
                         data.update(|data| {
