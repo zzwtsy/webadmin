@@ -1,0 +1,8 @@
+{
+    "host_label": "Host",
+    "login_label": "Login",
+    "password_label": "Password",
+    "sign_in_button": "Sign in",
+    "remember_me_label": "Remember me",
+    "not_authorized_message": "You are not authorized to access this service."
+}

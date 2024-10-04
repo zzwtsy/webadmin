@@ -1,0 +1,8 @@
+{
+    "host_label": "主机",
+    "login_label": "账户",
+    "password_label": "密码",
+    "sign_in_button": "登录",
+    "remember_me_label": "记住我",
+    "not_authorized_message": "您没有访问此服务的权限。"
+}

@@ -60,7 +60,7 @@ pub fn Login() -> impl IntoView {
 
                         if default_url.is_empty() {
                             alert.set(Alert::error(
-                                i18n.get_keys().you_are_not_authorized_to_access_this_service,
+                                i18n.get_keys().login.not_authorized_message,
                             ));
                             return;
                         }
@@ -148,7 +148,7 @@ pub fn Login() -> impl IntoView {
                                 <Show when=move || has_remote.get()>
                                     <div>
                                         <label class="block text-sm mb-2 dark:text-white">
-                                            {t!(i18n,host)}
+                                            {t!(i18n,login.host_label)}
                                         </label>
                                         <InputText
                                             placeholder="https://mail.example.org"
@@ -159,7 +159,7 @@ pub fn Login() -> impl IntoView {
                                 <Show when=move || !show_totp.get()>
                                     <div>
                                         <label class="block text-sm mb-2 dark:text-white">
-                                            {t!(i18n,login)}
+                                            {t!(i18n,login.login_label)}
                                         </label>
                                         <InputText
                                             placeholder="user@example.org"
@@ -169,7 +169,7 @@ pub fn Login() -> impl IntoView {
                                     <div>
                                         <div class="flex justify-between items-center">
                                             <label class="block text-sm mb-2 dark:text-white">
-                                                {t!(i18n,password)}
+                                                {t!(i18n,login.password_label)}
                                             </label>
 
                                         </div>
@@ -203,7 +203,7 @@ pub fn Login() -> impl IntoView {
                                     </div>
                                     <div class="ms-3">
                                         <label for="remember-me" class="text-sm dark:text-white">
-                                            {t!(i18n,remember_me)}
+                                            {t!(i18n,login.remember_me_label)}
                                         </label>
                                     </div>
                                 </div>
@@ -247,7 +247,7 @@ pub fn Login() -> impl IntoView {
                                         });
                                     }
                                 >
-                                    {t!(i18n,sign_in)}
+                                    {t!(i18n,login.sign_in_button)}
                                 </button>
                             </div>
                         </form>
