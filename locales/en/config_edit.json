@@ -1,0 +1,12 @@
+{
+    "settings_reloaded_message": "Settings reloaded",
+    "settings_saved_and_reloaded_message": "Your changes have been successfully saved and all settings have been reloaded. You may now close this window.",
+    "ok_button": "OK",
+    "settings_saved_message": "Settings saved",
+    "settings_saved_success_message": "Your changes have been saved successfully. You may now reload the configuration to apply the updates.",
+    "add_button": "Add",
+    "add_item_button": "Add Item",
+    "cancel_button": "Cancel",
+    "save_and_reload_button": "Save & Reload",
+    "save_changes_button": "Save changes"
+}

@@ -48,3 +48,16 @@ default = []
 [package.metadata.leptos-i18n]
 default = "en"
 locales = ["en", "zh_CN"]
+namespaces = [
+    "account_app_password",
+    "account_crypto",
+    "account_mfa",
+    "account_password",
+    "authorize",
+    "config_edit",
+    "config_list",
+    "config_schema_auth",
+    "config_search",
+    "login",
+    "notfound",
+]

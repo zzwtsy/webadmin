@@ -1,0 +1,14 @@
+{
+    "auth_device_success": "Device authenticated",
+    "auth_device_success_message": "You have successfully authenticated your device",
+    "auth_device_failure": "Device authentication failed",
+    "auth_device_failure_message": "The code you entered is invalid or has expired",
+    "login_button": "Login",
+    "password_label": "Password",
+    "totp_token_label": "TOTP Token",
+    "code_label": "Code",
+    "enter_device_code": "Enter the device code",
+    "invalid_redirect_uri": "Invalid redirect_uri parameter, must be a valid HTTPS URL",
+    "missing_redirect_uri": "Missing redirect_uri in query parameters",
+    "authorize_button": "Authorize"
+}

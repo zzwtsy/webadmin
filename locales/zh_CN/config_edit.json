@@ -1,0 +1,12 @@
+{
+    "settings_reloaded_message": "设置已重新加载",
+    "settings_saved_and_reloaded_message": "您的更改已成功保存，并且所有设置都已重新加载。您可以关闭此窗口。",
+    "ok_button": "确定",
+    "settings_saved_message": "设置已保存",
+    "settings_saved_success_message": "您的更改已成功保存。您可以重新加载配置以应用更新。",
+    "add_button": "添加",
+    "add_item_button": "添加项目",
+    "cancel_button": "取消",
+    "save_and_reload_button": "保存并重新加载",
+    "save_changes_button": "保存更改"
+}

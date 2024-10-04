@@ -1,0 +1,14 @@
+{
+    "auth_device_success": "设备认证成功",
+    "auth_device_success_message": "您已成功认证您的设备",
+    "auth_device_failure": "设备认证失败",
+    "auth_device_failure_message": "您输入的代码无效或已过期",
+    "login_button": "登录",
+    "password_label": "密码",
+    "totp_token_label": "TOTP 令牌",
+    "code_label": "验证码",
+    "enter_device_code": "请输入设备验证码",
+    "invalid_redirect_uri": "无效的 redirect_uri 参数，必须是有效的 HTTPS URL",
+    "missing_redirect_uri": "查询参数中缺少 redirect_uri",
+    "authorize_button": "授权"
+}
