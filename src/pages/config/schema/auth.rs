@@ -4,12 +4,18 @@
  * SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-SEL
  */
 
-use crate::core::{form::Expression, schema::*};
+use leptos_i18n::{t_display, use_i18n_scoped};
+
+use crate::{
+    core::{form::Expression, schema::*},
+    i18n::use_i18n,
+};
 
 use super::{smtp::*, CONNECTION_VARS, RCPT_DOMAIN_VARS, SMTP_RCPT_TO_VARS};
 
 impl Builder<Schemas, ()> {
     pub fn build_mail_auth(self) -> Self {
+        let i18n = use_i18n_scoped!(config_schema_auth);
         let conn_vars = ExpressionValidator::new(CONNECTION_VARS, &[]);
         let rcpt_domain = ExpressionValidator::new(RCPT_DOMAIN_VARS, &[]);
         let rcpt_vars = ExpressionValidator::new(SMTP_RCPT_TO_VARS, &[]);
@@ -19,8 +25,8 @@ impl Builder<Schemas, ()> {
             .suffix("algorithm")
             .names("signature", "signatures")
             .new_id_field()
-            .label("Signature ID")
-            .help("Unique identifier for the signature")
+            .label(i18n.get_keys().signature_id_label)
+            .help(i18n.get_keys().signature_id_tooltip)
             .build()
             .new_field("algorithm")
             .label("Algorithm")

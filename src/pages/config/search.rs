@@ -7,10 +7,12 @@
 use std::sync::Arc;
 
 use leptos::*;
+use leptos_i18n::{t_display, use_i18n_scoped};
 use leptos_router::use_query_map;
 
 use crate::{
     components::{list::ZeroResults, report::ReportView},
+    i18n::use_i18n,
     pages::config::Schemas,
 };
 
@@ -18,6 +20,7 @@ use super::{Field, Form, Section};
 
 #[component]
 pub fn SettingsSearch() -> impl IntoView {
+    let i18n = use_i18n_scoped!(config_search);
     let query = use_query_map();
     let schemas = expect_context::<Arc<Schemas>>();
 
@@ -101,8 +104,8 @@ pub fn SettingsSearch() -> impl IntoView {
                 view! {
                     <ReportView>
                         <ZeroResults
-                            title="No results"
-                            subtitle="No search settings were found with the selected criteria."
+                            title=t_display!(i18n,no_results_label).to_string()
+                            subtitle=t_display!(i18n,no_results_message).to_string()
                         />
                     </ReportView>
                 }

@@ -7,6 +7,7 @@
 use std::{collections::HashSet, sync::Arc};
 
 use leptos::*;
+use leptos_i18n::{t, t_display, td_display, use_i18n_scoped};
 use leptos_router::*;
 
 use crate::{
@@ -25,22 +26,21 @@ use crate::{
         },
         skeleton::Skeleton,
         Color,
-    },
-    core::{
+    }, core::{
         http::{self, HttpRequest},
         oauth::use_authorization,
         url::UrlBuilder,
-    },
-    pages::{
+    }, i18n::use_i18n, pages::{
         config::{ReloadSettings, SchemaType, Schemas, SettingsValues},
         maybe_plural, List,
-    },
+    }
 };
 
 use super::{Schema, Settings, UpdateSettings};
 
 #[component]
 pub fn SettingsList() -> impl IntoView {
+    let i18n = use_i18n_scoped!(config_list);
     let schemas = expect_context::<Arc<Schemas>>();
     let query = use_query_map();
     let page = create_memo(move |_| {
@@ -162,10 +162,9 @@ pub fn SettingsList() -> impl IntoView {
             {
                 Ok(_) => {
                     settings.refetch();
-                    alert.set(Alert::success(format!(
-                        "Deleted {}.",
-                        maybe_plural(items.len(), schema.name_singular, schema.name_plural,)
-                    )));
+                    let name = maybe_plural(items.len(), schema.name_singular, schema.name_plural,);
+                    let success_msg = td_display!(i18n.get_locale(), config_list.create_item_button, name).to_string();
+                    alert.set(Alert::success(success_msg));
                 }
                 Err(err) => {
                     alert.set(Alert::from(err));
@@ -198,7 +197,11 @@ pub fn SettingsList() -> impl IntoView {
                     <ToolbarButton
                         text=Signal::derive(move || {
                             let ns = selected.get().len();
-                            if ns > 0 { format!("Delete ({ns})") } else { "Delete".to_string() }
+                            if ns > 0 {
+                                t_display!(i18n,delete_with_namespace_button,ns).to_string()
+                            } else {
+                                i18n.get_keys().delete_button.to_string()
+                            }
                         })
 
                         color=Color::Red
@@ -213,13 +216,15 @@ pub fn SettingsList() -> impl IntoView {
                                 );
                                 modal
                                     .set(
-                                        Modal::with_title("Confirm deletion")
+                                        Modal::with_title(t_display!(i18n,confirm_deletion_title))
                                             .with_message(
-                                                format!(
-                                                    "Are you sure you want to delete {text}? This action cannot be undone.",
-                                                ),
+                                                t_display!(i18n,confirm_deletion_message,name=text.clone())
+                                                    .to_string(),
                                             )
-                                            .with_button(format!("Delete {text}"))
+                                            .with_button(
+                                                t_display!(i18n,delete_with_namespace_button,ns=text)
+                                                    .to_string(),
+                                            )
                                             .with_dangerous_callback(move || {
                                                 delete_action
                                                     .dispatch(
@@ -237,7 +242,7 @@ pub fn SettingsList() -> impl IntoView {
                     </ToolbarButton>
 
                     <ToolbarButton
-                        text="Reload config"
+                        text=t_display!(i18n,reload_config_button).to_string()
 
                         color=Color::Gray
                         on_click=Callback::new(move |_| {
@@ -250,7 +255,10 @@ pub fn SettingsList() -> impl IntoView {
 
                     <ToolbarButton
                         text=Signal::derive(move || {
-                            format!("Create {}", current_schema.get().name_singular)
+                            t_display!(
+                                i18n,create_item_button,name=current_schema.get().name_singular
+                            )
+                                .to_string()
                         })
 
                         color=Color::Blue
@@ -330,13 +338,13 @@ pub fn SettingsList() -> impl IntoView {
                             Some(
                                 view! {
                                     <ZeroResults
-                                        title="No results"
-                                        subtitle="Your search did not yield any results."
+                                        title=t_display!(i18n,no_results_label).to_string()
+                                        subtitle=t_display!(i18n,no_results_message).to_string()
                                         button_text=Signal::derive(move || {
-                                            format!(
-                                                "Create a new {}",
-                                                current_schema.get().name_singular,
+                                            t_display!(
+                                                i18n,create_new_item_button,name=current_schema.get().name_singular
                                             )
+                                                .to_string()
                                         })
 
                                         button_action=Callback::new(move |_| {
@@ -380,6 +388,7 @@ pub fn SettingsList() -> impl IntoView {
 
 #[component]
 fn SettingsItem(settings: Settings, schema: Arc<Schema>) -> impl IntoView {
+    let i18n = use_i18n_scoped!(config_list);
     let columns = schema
         .list
         .fields
@@ -401,7 +410,7 @@ fn SettingsItem(settings: Settings, schema: Arc<Schema>) -> impl IntoView {
                     class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                     href=edit_url
                 >
-                    Edit
+                    {t!(i18n,edit_button)}
                 </a>
             </ListItem>
         })

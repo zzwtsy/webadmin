@@ -218,26 +218,22 @@ pub fn AppPasswords() -> impl IntoView {
                                         Modal::with_title(app_password_i18n.confirm_deletion_title)
                                             .with_message(
                                                 if to_delete == 1 {
-                                                    i18n.get_keys()
-                                                        .account_app_password
+                                                    app_password_i18n
                                                         .confirm_deletion_message
                                                         .one
                                                 } else {
-                                                    i18n.get_keys()
-                                                        .account_app_password
+                                                    app_password_i18n
                                                         .confirm_deletion_message
                                                         .other
                                                 },
                                             )
                                             .with_button(
                                                 if to_delete == 1 {
-                                                    i18n.get_keys()
-                                                        .account_app_password
+                                                    app_password_i18n
                                                         .delete_confirmation_button
                                                         .one
                                                 } else {
-                                                    i18n.get_keys()
-                                                        .account_app_password
+                                                    app_password_i18n
                                                         .delete_confirmation_button
                                                         .other
                                                 },
@@ -319,13 +315,9 @@ pub fn AppPasswords() -> impl IntoView {
                                 view! {
                                     <ZeroResults
                                         title=app_password_i18n.no_results_label
-                                        subtitle=i18n
-                                            .get_keys()
-                                            .account_app_password
+                                        subtitle=app_password_i18n
                                             .no_results_message
-                                        button_text=i18n
-                                            .get_keys()
-                                            .account_app_password
+                                        button_text=app_password_i18n
                                             .create_new_password_label
 
                                         button_action=Callback::new(move |_| {

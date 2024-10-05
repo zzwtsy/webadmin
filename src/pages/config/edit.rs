@@ -32,17 +32,15 @@ use crate::{
         },
         skeleton::Skeleton,
         Color,
-    },
-    core::{
+    }, core::{
         form::{ExternalSources, FormData},
         http::{self, HttpRequest},
         oauth::use_authorization,
         schema::SelectType,
-    },
-    pages::{
+    }, i18n::use_i18n, pages::{
         config::{ReloadSettings, Schema, SchemaType, Schemas, Settings, Type, UpdateSettings},
         List,
-    },
+    }
 };
 
 #[derive(Clone, Serialize, Deserialize, Default)]
@@ -67,6 +65,8 @@ pub const DEFAULT_SETTINGS_URL: &str = "/settings/network/edit";
 
 #[component]
 pub fn SettingsEdit() -> impl IntoView {
+    let i18n = use_i18n();
+    let edit_i18n = i18n.get_keys().config_edit;
     let auth = use_authorization();
     let alert = use_alerts();
     let params = use_params_map();
@@ -252,14 +252,9 @@ pub fn SettingsEdit() -> impl IntoView {
                                             Some(url) => use_navigate()(&url, Default::default()),
                                             None => {
                                                 modal.set(
-                                                    Modal::with_title("Settings reloaded")
-                                                        .with_message(concat!(
-                                                            "Your changes have been successfully ",
-                                                            "saved and all settings have been  ",
-                                                            "reloaded. You may now close ",
-                                                            "this window."
-                                                        ))
-                                                        .with_button("OK"),
+                                                    Modal::with_title(edit_i18n.settings_reloaded_title)
+                                                        .with_message(edit_i18n.settings_saved_and_reloaded_message)
+                                                        .with_button(edit_i18n.ok_button),
                                                 );
                                             }
                                         }
@@ -281,13 +276,9 @@ pub fn SettingsEdit() -> impl IntoView {
                                 Some(url) => use_navigate()(&url, Default::default()),
                                 None => {
                                     modal.set(
-                                        Modal::with_title("Settings saved")
-                                            .with_message(concat!(
-                                                "Your changes have been saved successfully. ",
-                                                "You may now reload the configuration ",
-                                                "to apply the updates."
-                                            ))
-                                            .with_button("OK"),
+                                        Modal::with_title(edit_i18n.settings_saved_title)
+                                            .with_message(edit_i18n.settings_saved_success_message)
+                                            .with_button(edit_i18n.ok_button),
                                     );
                                 }
                             }
@@ -395,7 +386,7 @@ pub fn SettingsEdit() -> impl IntoView {
                                                 Type::Array => {
                                                     view! {
                                                         <StackedInput
-                                                            add_button_text="Add".to_string()
+                                                            add_button_text=edit_i18n.add_button.to_string()
                                                             element=FormElement::new(field.id, data)
                                                             placeholder=create_memo(move |_| {
                                                                 field
@@ -435,7 +426,7 @@ pub fn SettingsEdit() -> impl IntoView {
                                                     view! {
                                                         <StackedBadge
                                                             element=FormElement::new(field.id, data)
-                                                            add_button_text="Add Item"
+                                                            add_button_text=edit_i18n.add_item_button
                                                             color=Color::Green
                                                         />
                                                     }
@@ -539,7 +530,7 @@ pub fn SettingsEdit() -> impl IntoView {
 
             <FormButtonBar>
                 <Button
-                    text="Cancel"
+                    text=edit_i18n.cancel_button
                     color=Color::Gray
                     on_click=move |_| {
                         use_navigate()(
@@ -550,7 +541,7 @@ pub fn SettingsEdit() -> impl IntoView {
                 />
 
                 <Button
-                    text="Save & Reload"
+                    text=edit_i18n.save_and_reload_button
                     color=Color::Gray
                     on_click=Callback::new(move |_| {
                         data.update(|data| {
@@ -567,7 +558,7 @@ pub fn SettingsEdit() -> impl IntoView {
                 </Button>
 
                 <Button
-                    text="Save changes"
+                    text=edit_i18n.save_changes_button
                     color=Color::Blue
                     on_click=Callback::new(move |_| {
                         data.update(|data| {
