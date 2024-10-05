@@ -16,7 +16,7 @@ use components::{
     },
     layout::MenuItem,
 };
-
+leptos_i18n::load_locales!();
 use crate::i18n::I18nContextProvider;
 use gloo_storage::{SessionStorage, Storage};
 use leptos::*;
@@ -63,8 +63,6 @@ use crate::{
 pub mod components;
 pub mod core;
 pub mod pages;
-
-leptos_i18n::load_locales!();
 
 pub const STATE_STORAGE_KEY: &str = "webadmin_state";
 pub const STATE_LOGIN_NAME_KEY: &str = "webadmin_login_name";
