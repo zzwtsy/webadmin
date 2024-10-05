@@ -1,12 +1,13 @@
 {
-    "item_deleted_message": "Deleted {{name}}.",
-    "delete_with_namespace_button": "Delete ({{ns}})",
+    "item_deleted_message": "Deleted {{ name }}.",
+    "delete_with_namespace_button": "Delete ({{ ns }})",
     "delete_button": "Delete",
     "confirm_deletion_title": "Confirm deletion",
-    "confirm_deletion_message": "Are you sure you want to delete {{name}}? This action cannot be undone.",
+    "confirm_deletion_message": "Are you sure you want to delete {{ name }}? This action cannot be undone.",
     "reload_config_button": "Reload config",
-    "create_item_button": "Create {{name}}",
+    "create_item_button": "Create {{ name }}",
     "no_results_label": "No results",
     "no_results_message": "Your search did not yield any results.",
+    "create_new_item_button": "Create a new {{ name }",
     "edit_button": "Edit"
 }
