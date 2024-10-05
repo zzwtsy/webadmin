@@ -2959,6 +2959,7 @@ dependencies = [
  "leptos-chartistry",
  "leptos-use 0.13.5",
  "leptos_i18n",
+ "leptos_i18n_macro",
  "leptos_meta",
  "leptos_router",
  "log",

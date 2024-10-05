@@ -39,6 +39,7 @@ web-time = "1.1.0"
 rand = "0.8.5"
 leptos-chartistry = "0.1.7"
 leptos_i18n = { version = "0.4.1", features = ["csr"] }
+leptos_i18n_macro = { version = "0.4.1", features = ["interpolate_display"] }
 
 [features]
 demo = []
