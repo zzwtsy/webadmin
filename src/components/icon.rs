@@ -783,3 +783,20 @@ pub fn IconHandRaised(
         </SvgWrapper>
     }
 }
+
+/// https://lucide.dev/icons/languages
+#[component]
+pub fn IconLanguages(
+    #[prop(optional)] size: Option<usize>,
+    #[prop(attrs)] attrs: Vec<(&'static str, Attribute)>,
+) -> impl IntoView {
+    view! {
+        <SvgWrapper size attrs>
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m 14,18 h 6 m 2,4 -5,-10 -5,10 M 7,2 H 8 M 2,5 H 14 M 4,14 10,8 12,5 m -7,3 6,6"
+            ></path>
+        </SvgWrapper>
+    }
+}
